@@ -1,1 +1,1 @@
-# diplomaproject
+# Online Drug Dictionary
