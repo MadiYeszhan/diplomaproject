@@ -40,4 +40,8 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function drug_review(){
+        return $this->hasOne(DrugReview::class);
+    }
 }
