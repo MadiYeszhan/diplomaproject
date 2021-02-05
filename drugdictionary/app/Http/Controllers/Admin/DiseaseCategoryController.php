@@ -20,7 +20,7 @@ class DiseaseCategoryController extends Controller
         $diseases = DiseaseCategory::all();
         $diseaseLanguages = DiseaseCategoryLanguage::all();
         return view('admin.DiseaseCategory.index', compact(['diseases','diseaseLanguages']));
-    }s
+    }
 
     /**
      * Show the form for creating a new resource.
