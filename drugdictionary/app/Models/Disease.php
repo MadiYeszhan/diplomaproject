@@ -24,4 +24,8 @@ class Disease extends Model
     public function contradictions(){
         return $this->belongsToMany(Contradiction::class);
     }
+
+    public function users(){
+        return $this->belongsToMany(User::class);
+    }
 }

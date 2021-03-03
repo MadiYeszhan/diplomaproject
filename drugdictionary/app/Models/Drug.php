@@ -57,4 +57,9 @@ class Drug extends Model
     public function manufacturers(){
         return $this->belongsToMany(Manufacturer::class);
     }
+
+    public function pharmacy_links()
+    {
+        return $this->hasMany(PharmacyLink::class);
+    }
 }

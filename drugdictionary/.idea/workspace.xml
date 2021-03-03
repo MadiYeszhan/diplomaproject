@@ -159,7 +159,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/main" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -171,6 +171,7 @@
       <recent name="C:\Users\Admin\diplomaproject\drugdictionary\app\Models" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Admin\diplomaproject\drugdictionary\resources\views\main" />
       <recent name="C:\Users\Admin\diplomaproject\drugdictionary\resources" />
     </key>
   </component>
@@ -208,7 +209,18 @@
       <workItem from="1612173097440" duration="14171000" />
       <workItem from="1612517478816" duration="588000" />
       <workItem from="1612518092734" duration="6000" />
-      <workItem from="1612518148454" duration="256000" />
+      <workItem from="1612518148454" duration="275000" />
+      <workItem from="1612764576766" duration="859000" />
+      <workItem from="1612954787821" duration="1119000" />
+      <workItem from="1613302643608" duration="6728000" />
+      <workItem from="1613383938599" duration="7021000" />
+      <workItem from="1613405082918" duration="3639000" />
+      <workItem from="1613560098447" duration="5357000" />
+      <workItem from="1613651609674" duration="8630000" />
+      <workItem from="1613731034652" duration="2090000" />
+      <workItem from="1613803895386" duration="1507000" />
+      <workItem from="1614160965611" duration="4631000" />
+      <workItem from="1614766942814" duration="16035000" />
     </task>
     <servers />
   </component>
@@ -228,17 +240,17 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="698" y="319" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1611823981588">
+    <state x="698" y="319" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1614163381093">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="698" y="319" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1611823981588" />
+    <state x="698" y="319" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1614163381093" />
     <state x="536" y="225" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1611136826761">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="536" y="225" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1611136826761" />
-    <state x="571" y="276" key="run.anything.popup" timestamp="1612173684521">
+    <state x="571" y="276" key="run.anything.popup" timestamp="1613384397842">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="571" y="276" key="run.anything.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1612173684521" />
+    <state x="571" y="276" key="run.anything.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1613384397842" />
   </component>
 </project>
