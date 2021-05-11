@@ -17,6 +17,8 @@
                     @endforeach
                     <a href="{{route('searchDrugNumber')}}">0-9</a>
                     </p>
+
+                    {{ __('message.welcome') }}
                 </div>
                 </form>
             </div>

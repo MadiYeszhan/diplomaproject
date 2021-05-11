@@ -21,7 +21,6 @@
                     <div class="card-body">
                         <form action="{{route('drugs.store')}}" method="post" enctype="multipart/form-data">
                             @csrf
-
                             <div class="form-group">
                                 <div id="drug_titles">
                                     <div class="form-group" id="drug_title_1">
@@ -76,7 +75,7 @@
 
                             <div class="form-group">
                                 <label for="drug_id">Drug related to</label>
-                                <select class="form-control" name="drug_id" id="drug_id">
+                                <select class="form-control" name="drug_id" id="drug_id" data-live-search="true">
                                     <option value="">None</option>
                                     @foreach($drugs as $drug)
                                     <option value="{{$drug->id}}">

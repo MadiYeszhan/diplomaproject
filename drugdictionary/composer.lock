@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "421b8a71e323c0a8aa77c2b06ef01051",
+    "content-hash": "5ade7c0ee6d3d416839b4b18e887d9f3",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2416,6 +2416,57 @@
                 }
             ],
             "time": "2020-06-26T18:04:14+00:00"
+        },
+        {
+            "name": "stefangabos/zebra_curl",
+            "version": "1.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/stefangabos/Zebra_cURL.git",
+                "reference": "0e9459bbef2d302af79165d1c6921dd2cbbcc7ad"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/stefangabos/Zebra_cURL/zipball/0e9459bbef2d302af79165d1c6921dd2cbbcc7ad",
+                "reference": "0e9459bbef2d302af79165d1c6921dd2cbbcc7ad",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "Zebra_cURL.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "Stefan Gabos",
+                    "email": "contact@stefangabos.ro",
+                    "homepage": "https://github.com/stefangabos",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A high performance cURL PHP library allowing the running of multiple requests at once, asynchronously",
+            "homepage": "https://github.com/stefangabos/Zebra_cURL",
+            "keywords": [
+                "asynchronous",
+                "curl",
+                "libcurl",
+                "php",
+                "request",
+                "wrapper"
+            ],
+            "support": {
+                "issues": "https://github.com/stefangabos/Zebra_cURL/issues",
+                "source": "https://github.com/stefangabos/Zebra_cURL/tree/1.5.0"
+            },
+            "time": "2020-09-29T09:10:50+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -7418,7 +7469,10 @@
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": "^7.3|^8.0"
+        "php": "^7.3|^8.0",
+        "ext-curl": "*",
+        "ext-dom": "*",
+        "ext-libxml": "*"
     },
     "platform-dev": [],
     "plugin-api-version": "2.0.0"

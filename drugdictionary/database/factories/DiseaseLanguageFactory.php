@@ -14,7 +14,6 @@ class DiseaseLanguageFactory extends Factory
      * @var string
      */
     protected $model = DiseaseLanguage::class;
-
     /**
      * Define the model's default state.
      *

@@ -969,6 +969,15 @@
       ),
       'reference' => '6c4c75f61e69ca54d5ab557a2b90ffdccf1c63cd',
     ),
+    'stefangabos/zebra_curl' => 
+    array (
+      'pretty_version' => '1.5.0',
+      'version' => '1.5.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '0e9459bbef2d302af79165d1c6921dd2cbbcc7ad',
+    ),
     'swiftmailer/swiftmailer' => 
     array (
       'pretty_version' => 'v6.2.5',

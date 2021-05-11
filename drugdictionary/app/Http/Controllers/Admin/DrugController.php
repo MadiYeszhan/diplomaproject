@@ -30,7 +30,7 @@ class DrugController extends Controller
      */
     public function index()
     {
-        $drugs = Drug::all();
+        $drugs = Drug::orderByDesc('updated_at')->paginate(20);
         return view('admin.Drug.index', compact(['drugs']));
     }
 
@@ -195,13 +195,20 @@ class DrugController extends Controller
         foreach ($drug->contradiction->diseases as $disease){
             $diseaseContradiction .= $disease->id.',';
         }}
-
-        return view('admin.Drug.edit',compact(['diseaseArr','drugCategories','drugs','drug','diseaseContradiction']));
+        $drugImagesSize = sizeof($drug->drug_images);
+        return view('admin.Drug.edit',compact(['diseaseArr','drugCategories','drugs','drug','diseaseContradiction','drugImagesSize']));
     }
 
     public function destroyDrugTitle(DrugTitle $drugTitle)
     {
         $drugTitle->delete();
+        return response()->json(['success' => 'Record deleted successfully!']);
+    }
+
+    public function destroyDrugImage(DrugImage $drugImage)
+    {
+        Storage::delete($drugImage->image_name);
+        $drugImage->delete();
         return response()->json(['success' => 'Record deleted successfully!']);
     }
 
@@ -365,6 +372,10 @@ class DrugController extends Controller
 
             foreach ($drug->drug_reviews() as $review) {
                 $review->delete();
+            }
+
+            foreach ($drug->pharmacy_links() as $link) {
+                $link->delete();
             }
 
             $drug->manufacturers()->detach();

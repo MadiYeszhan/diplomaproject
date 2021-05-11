@@ -30,6 +30,9 @@
                     @endif
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal">Add</button>
                 </div>
+                <p>{{Auth::user()->role}}</p>
+
+
 
                 <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-lg" role="document">

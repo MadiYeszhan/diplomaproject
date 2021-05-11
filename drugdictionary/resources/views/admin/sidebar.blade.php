@@ -17,6 +17,8 @@
             <li class="list-group-item"> <a href="{{route('drug_categories.index')}}">Drug Categories</a></li>
             <li class="list-group-item"> <a href="{{route('disease_categories.index')}}">Disease Categories</a></li>
             <li class="list-group-item"> <a href="{{route('manufacturers.index')}}">Manufactures</a></li>
+            <li class="list-group-item"> <a href="{{route('pharmacy_links.index')}}">Pharmacy Links</a></li>
+            <li class="list-group-item"> <a href="{{route('admin.users')}}">Users</a></li>
         </ul>
     </div>
 </nav>

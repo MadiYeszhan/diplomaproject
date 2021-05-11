@@ -56,13 +56,11 @@
                                 @endforeach
                                 </tbody>
                             </table>
+                            {{ $drugs->onEachSide(3)->links() }}
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-
-
 @endsection

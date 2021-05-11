@@ -148,6 +148,7 @@
       <path value="$PROJECT_DIR$/vendor/psr/log" />
       <path value="$PROJECT_DIR$/vendor/psr/http-client" />
       <path value="$PROJECT_DIR$/vendor/snapappointments/bootstrap-select" />
+      <path value="$PROJECT_DIR$/vendor/stefangabos/zebra_curl" />
     </include_path>
   </component>
   <component name="ProjectId" id="1mzjwu5YF48atzNbzlrQV5wZlAZ" />
@@ -159,20 +160,24 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/main" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/lang/kz" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Admin\diplomaproject\drugdictionary\resources\lang\kz" />
+      <recent name="C:\Users\Admin\diplomaproject\drugdictionary\resources\lang\ru" />
+      <recent name="C:\Users\Admin\diplomaproject\drugdictionary\resources\views\admin" />
+      <recent name="C:\Users\Admin\diplomaproject\drugdictionary\resources\views\admin\PharmacyLink" />
+      <recent name="C:\Users\Admin\diplomaproject\drugdictionary\resources\views\main" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Admin\diplomaproject\drugdictionary\resources\views" />
       <recent name="C:\Users\Admin\diplomaproject\drugdictionary\app\Http\Controllers" />
       <recent name="C:\Users\Admin\diplomaproject\drugdictionary\app\Http\Controllers\Admin" />
       <recent name="C:\Users\Admin\diplomaproject\drugdictionary\app\Models" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Admin\diplomaproject\drugdictionary\resources\views\main" />
-      <recent name="C:\Users\Admin\diplomaproject\drugdictionary\resources" />
     </key>
   </component>
   <component name="RunManager">
@@ -221,6 +226,45 @@
       <workItem from="1613803895386" duration="1507000" />
       <workItem from="1614160965611" duration="4631000" />
       <workItem from="1614766942814" duration="16035000" />
+      <workItem from="1614860550077" duration="1806000" />
+      <workItem from="1614862831901" duration="228000" />
+      <workItem from="1614863068322" duration="95000" />
+      <workItem from="1614863425337" duration="34000" />
+      <workItem from="1614863558327" duration="1668000" />
+      <workItem from="1614940891266" duration="10741000" />
+      <workItem from="1614965600243" duration="1599000" />
+      <workItem from="1615311605990" duration="1244000" />
+      <workItem from="1615440951982" duration="614000" />
+      <workItem from="1615797718049" duration="1308000" />
+      <workItem from="1616493536533" duration="8365000" />
+      <workItem from="1616579589716" duration="1315000" />
+      <workItem from="1616678191049" duration="5232000" />
+      <workItem from="1617695495386" duration="7000" />
+      <workItem from="1617695592497" duration="1926000" />
+      <workItem from="1617955948402" duration="1014000" />
+      <workItem from="1618992341932" duration="1356000" />
+      <workItem from="1618995849774" duration="1436000" />
+      <workItem from="1619006484135" duration="615000" />
+      <workItem from="1619009054145" duration="606000" />
+      <workItem from="1619083908794" duration="788000" />
+      <workItem from="1619085715063" duration="811000" />
+      <workItem from="1619087530848" duration="1542000" />
+      <workItem from="1619089434980" duration="459000" />
+      <workItem from="1619185712655" duration="1334000" />
+      <workItem from="1619187573548" duration="1598000" />
+      <workItem from="1619513383214" duration="1486000" />
+      <workItem from="1619515158940" duration="246000" />
+      <workItem from="1619528698188" duration="626000" />
+      <workItem from="1619786256942" duration="699000" />
+      <workItem from="1619882019939" duration="618000" />
+      <workItem from="1619882869538" duration="1020000" />
+      <workItem from="1620030326890" duration="519000" />
+      <workItem from="1620038632367" duration="2000" />
+      <workItem from="1620038781563" duration="4162000" />
+      <workItem from="1620060153898" duration="5738000" />
+      <workItem from="1620119028753" duration="5746000" />
+      <workItem from="1620143474813" duration="1979000" />
+      <workItem from="1620303578555" duration="1682000" />
     </task>
     <servers />
   </component>
@@ -240,17 +284,37 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="698" y="319" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1614163381093">
+    <state x="650" y="341" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1614967064713">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="698" y="319" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1614163381093" />
-    <state x="536" y="225" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1611136826761">
+    <state x="650" y="341" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1614967064713" />
+    <state x="698" y="319" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1620145402358">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="536" y="225" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1611136826761" />
-    <state x="571" y="276" key="run.anything.popup" timestamp="1613384397842">
+    <state x="698" y="319" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1620145402358" />
+    <state x="795" y="462" key="NewPhpFileDialog" timestamp="1620303885662">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="571" y="276" key="run.anything.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1613384397842" />
+    <state x="795" y="462" key="NewPhpFileDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1620303885662" />
+    <state x="461" y="171" key="SettingsEditor" timestamp="1617955957725">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="461" y="171" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1617955957725" />
+    <state x="566" y="149" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1620144787476">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="566" y="149" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1620144787476" />
+    <state x="667" y="139" width="585" height="801" key="find.popup" timestamp="1620042752058">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="667" y="139" width="585" height="801" key="find.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1620042752058" />
+    <state x="571" y="276" key="run.anything.popup" timestamp="1616497274167">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="571" y="276" key="run.anything.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1616497274167" />
+    <state x="623" y="235" width="672" height="678" key="search.everywhere.popup" timestamp="1616580342219">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="623" y="235" width="672" height="678" key="search.everywhere.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1616580342219" />
   </component>
 </project>

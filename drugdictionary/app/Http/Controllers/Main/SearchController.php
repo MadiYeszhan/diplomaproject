@@ -41,7 +41,9 @@ class SearchController extends Controller
                         ->orWhere('drug_languages.description', 'LIKE', '%' . $search . '%')
                         ->orWhere('drug_languages.composition', 'LIKE', '%' . $search . '%');
                 })
-                ->orderBy('drug_id')
+                ->orderByRaw(
+                    "case when `drug_titles`.`title` = '".$search."' then 0 else 1 end"
+                )
                 ->orderBy('weight')
                 ->select('drug_titles.drug_id','drug_languages.language', 'drug_titles.title', 'drug_languages.description',
                     'drug_languages.composition', 'drug_titles.weight');

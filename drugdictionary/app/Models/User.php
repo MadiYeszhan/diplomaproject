@@ -48,4 +48,14 @@ class User extends Authenticatable implements MustVerifyEmail
     public function diseases(){
         return $this->belongsToMany(Disease::class);
     }
+
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class);
+    }
+
+    public function mute()
+    {
+        return $this->hasOne(Mute::class);
+    }
 }

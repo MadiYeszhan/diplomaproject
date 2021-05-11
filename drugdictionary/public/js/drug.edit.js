@@ -41,12 +41,11 @@ $(document).ready(function(){
         whiteList: true
     });
 
+    var i_img = 0;
+
 
     $('#disease_id').selectpicker('render');
     $('#drug_id').selectpicker('render');
-
-    var i_img = 0;
-
     $("#add_image").click(function() {
         i_img++;
         var x = $("#drug_images");
@@ -57,7 +56,6 @@ $(document).ready(function(){
             $("#remove_image").removeClass('d-none');
         }
     });
-
     $("#remove_image").click(function() {
         if (i_img !== 0) {
             $("#drug_image_"+i_img).remove();
@@ -70,7 +68,27 @@ $(document).ready(function(){
     });
 
     $(".delete_image").click(function() {
-       alert('sd');
+        if (old_img !== 0) {
+            let id = $("#old_image_"+old_img).data("id");
+            if (id !== undefined){
+                var token = $("meta[name='csrf-token']").attr("content");
+                $.ajax(
+                    {
+                        url: '/admin/drugs/drug_image/'+id,
+                        type: 'GET',
+                        data: {
+                            "id": id,
+                            "_token": token,
+                        },
+                        success: function (){
+                            console.log("it Works");
+                        }
+                    });
+            }
+            $("#old_image_"+old_img).remove();
+            old_img--;
+            $("#old_images_count").val(old_img);
+        }
     });
 
     setInterval(function(){

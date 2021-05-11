@@ -4,6 +4,7 @@
     <script type="text/javascript" src="{{ asset('js/jquery.amsify.suggestags.js') }}"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
+    <script> var old_img = {{$drugImagesSize}}</script>
     <script> var diseaseArr =  @json($diseaseArr); @if($drug->drug_titles->first() != null) var i = {{sizeof($drug->drug_titles)}}; @else var i = 1 @endif </script>
     <script type="text/javascript" src="{{ asset('js/drug.edit.js') }}"></script>
 @endsection
@@ -139,18 +140,18 @@
                                 <div id="drug_titles">
                                     <div class="form-group" id="drug_images">
                                         <label>Images</label>
-                                        @foreach($drug->drug_images as $image)
+                                        @foreach($drug->drug_images as $i => $image)
                                             @php
                                                 $plo = explode('/',$image->image_name)[2];
                                             @endphp
-                                            <div class="mb-2" > <a class="images" data-src="{{asset('storage/img/'.$plo)}}" href="{{asset('storage/img/'.$plo)}}">{{$plo}}</a> <button type="button" class="btn btn-danger delete_image" >Delete</button>  </div>
+                                            <div class="mb-2" id="old_image_{{$i+1}}"  data-id="{{$image->id}}"> <a class="images" data-src="{{asset('images/'.$plo)}}" href="{{asset('images/'.$plo)}}">{{$plo}}</a> <button type="button" class="btn btn-danger delete_image" >Delete</button> </div>
                                         @endforeach
                                     </div>
-
                                 </div>
                                 <button type="button" class="btn btn-primary" id="add_image">Add image</button>
                                 <button type="button" class="btn btn-danger d-none" id="remove_image">Remove image</button>
 
+                                <input type="hidden" name="old_images_count" id="old_images_count"  value="{{$drugImagesSize}}"/>
                                 <input type="hidden" name="drug_images_count" id="drug_images_count"  value="0"/>
                             </div>
 
