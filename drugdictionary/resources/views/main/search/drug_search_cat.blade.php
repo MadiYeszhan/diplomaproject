@@ -7,7 +7,7 @@
         </section>
 
         <div class="container">
-            <h3 class=" fw-normal">Поиск лекарств по категории</h3>
+            <h3 class=" fw-normal">Поиск лекарств по категории <a href="{{route('main.drugs')}}" class="ml-4" style="font-size: 14px">Back to drugs section</a></h3>
             <p class="lead fw-normal">
                 Приведенные ниже ресурсы помогут сузить поиск до конкретной целевой информации о лекарствах.
                 Информация доступна как потребителям, так и специалистам в области здравоохранения.

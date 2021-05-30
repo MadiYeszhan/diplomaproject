@@ -5,7 +5,7 @@
             <div class="col-md-9">
                 <h1 class="mt-5">Search results for drugs
                     <a href="{{route('main.index')}}" class="ml-4" style="font-size: 14px">Back to main</a>
-                    <a class="ml-4" style="font-size: 14px">Back to drugs section</a>
+                    <a href="{{route('main.drugs')}}" class="ml-4" style="font-size: 14px">Back to drugs section</a>
                 </h1>
                 <form action="{{route('searchText')}}" method="get">
                     <section class="w-100 m-auto main-search">

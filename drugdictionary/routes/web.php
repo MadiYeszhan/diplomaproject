@@ -30,6 +30,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [MainController::class, 'index'])->name('main.index');
 Route::get('/drugs', [MainController::class, 'drugs'])->name('main.drugs');
 Route::get('/diseases', [MainController::class, 'diseases'])->name('main.diseases');
+Route::get('/side_effects', [MainController::class, 'side_effects'])->name('main.side_effects');
+Route::get('/manufacturers', [MainController::class, 'manufacturers'])->name('main.manufacturers');
+
 Route::get('/pharmacies', [MainController::class, 'pharmacies'])->name('main.pharmacies');
 Route::get('/about', [MainController::class, 'about'])->name('main.about');
 Route::get('/contacts', [MainController::class, 'contacts'])->name('main.contacts');
@@ -59,6 +62,8 @@ Route::get('/drugs/category/{category}', [SearchController::class, 'searchDrugCa
 ///Search disease
 Route::get('/disease/search', [SearchController::class, 'searchDiseaseText'])->name('searchDiseaseText');
 Route::get('/disease/alphabet/{letter}', [SearchController::class, 'searchDiseaseAlphabet'])->name('searchDiseaseAlphabet');
+///Search side effects
+Route::get('/side_effect/search', [SearchController::class, 'searchTextSide'])->name('searchTextSide');
 
 
 //Admin panel routes

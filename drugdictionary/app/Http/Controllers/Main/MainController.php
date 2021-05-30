@@ -4,12 +4,14 @@ namespace App\Http\Controllers\Main;
 
 use App\Http\Controllers\Controller;
 use App\Models\Disease;
+use App\Models\DiseaseLanguage;
 use App\Models\Drug;
 use App\Models\DrugCategory;
 use App\Models\DrugCategoryLanguage;
 use App\Models\DrugReview;
 use App\Models\DrugTitle;
 use App\Models\Manufacturer;
+use App\Models\SideEffectLanguage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
@@ -78,9 +80,20 @@ class MainController extends Controller
 
     public function diseases()
     {
-        //Alphabet for search
-        $alphabetArr = self::alphabetArrEng;
-        return view('main.diseases',compact('alphabetArr'));
+        $diseases = DiseaseLanguage::all()->where('language','=',Cookie::get('lang'))->paginate(20);
+        return view('main.section.disease',compact('diseases'));
+    }
+
+    public function manufacturers()
+    {
+        $manuf = Manufacturer::all()->paginate(20);
+        return view('main.section.manufacturer',compact('manuf'));
+    }
+
+    public function side_effects()
+    {
+        $drugs = DrugTitle::orderBy('weight')->where('language','=',Cookie::get('lang'))->get()->unique('drug_id')->paginate(20);
+        return view('main.section.side',compact('drugs'));
     }
 
     public function changeLanguage($lang)

@@ -5,20 +5,21 @@
             <div class="col-md-9">
                 <h1 class="mt-5">Search results for drugs
                     <a href="{{route('main.index')}}" class="ml-4" style="font-size: 14px">Back to main</a>
-                    <a href="{{route('main.diseases')}}" class="ml-4" style="font-size: 14px">Back to disease section</a>
+                    <a href="{{route('main.side_effects')}}" class="ml-4" style="font-size: 14px">Back to side effects section</a>
                 </h1>
-                <form action="{{route('searchDiseaseText')}}" method="get">
+                <form action="{{route('searchTextSide')}}" method="get">
                     <section class="w-100 m-auto main-search">
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control" name="search_drug" style="border-radius: 10px;" placeholder="Поиск болезней" value="{{$search}}" >
+                            <input type="text" class="form-control" name="search_side" style="border-radius: 10px;" placeholder="Поиск лекарств" value="{{$search}}" >
                             <button type="submit" class="btn btn-success ml-1" style="border-radius: 10px">Поиск</button>
                         </div>
                     </section>
                 </form>
+
                 @if(sizeof($results) > 0)
                     @foreach($results as $result)
                         <div class="clearfix search-result overflow-hidden">
-                            <h4><a href="#">  {{$result->title}}</a></h4>
+                            <h4><a href="#">{{$result->title}}</a></h4>
                         </div>
                         <br>
                     @endforeach

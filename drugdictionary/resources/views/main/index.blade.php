@@ -35,11 +35,11 @@
                         <div class="container justify-content-center">
                     <div class="pb-2">
                         <a href="{{route('main.drugs')}}"><button type="button" class="btn btn-outline-secondary button" >Лекарства</button></a>
-                        <a href=""><button type="button" class="btn btn-outline-secondary button">Побочные эффекты</button></a>
+                        <a href="{{route('main.side_effects')}}"><button type="button" class="btn btn-outline-secondary button">Побочные эффекты</button></a>
                     </div>
                     <div>
-                        <a href=""><button type="button" class="btn btn-outline-secondary button">Болезни</button></a>
-                        <a href=""><button type="button" class="btn btn-outline-secondary button">Производители лекарств</button></a>
+                        <a href="{{route('main.diseases')}}"><button type="button" class="btn btn-outline-secondary button">Болезни</button></a>
+                        <a href="{{route('main.manufacturers')}}"><button type="button" class="btn btn-outline-secondary button">Производители лекарств</button></a>
                     </div>
 
                 </div>

@@ -48,7 +48,7 @@ class SearchController extends Controller
                         ->orWhere('drug_languages.composition', 'LIKE', '%' . $search . '%');
                 })
                 ->orderByRaw(
-                    "case when `drug_titles`.`title` = '".$search."' then 0 else 1 end"
+                    "case when `drug_titles`.`title` LIKE '%".$search."%' then 0 else 1 end"
                 )
                 ->orderBy('weight');
             $results->select('drug_titles.drug_id','drug_languages.language', 'drug_titles.title', 'drug_languages.description',
@@ -161,8 +161,40 @@ class SearchController extends Controller
                         ->orWhere('disease_languages.description', 'LIKE', '%' . $search . '%');
                 })
                 ->orderBy('disease_id');
-            $results = $results->get()->unique('disease_id');
-            return view('main.search.disease_search_text', compact(['results']));
+            $results = $results->get()->unique('disease_id')->paginate(10);
+            return view('main.search.disease_search_text', compact(['results','search']));
+        }
+    }
+
+    public function searchTextSide(Request $request)
+    {
+        $v = Validator::make($request->all(), [
+            'search_side' => 'required|min:3|max:255',
+        ]);
+
+        if ($v->fails()) {
+            return redirect()->back()->withErrors($v->errors());
+        }
+        else {
+            $lang = null;
+            if (Cookie::get('lang') == null) {
+                $lang = 1;
+            } else {
+                $lang = intval(Cookie::get('lang'));
+            }
+            $search = $request->get('search_side');
+            $results = DB::table('drug_titles')
+                ->where('drug_titles.language', '=', $lang)
+                ->where(function ($query) use ($search) {
+                    $query->where('drug_titles.title', 'LIKE', $search . '%');
+                })
+                ->orderByRaw(
+                    "case when `drug_titles`.`title` = '".$search."' then 0 else 1 end"
+                )
+                ->orderBy('weight');
+            $results->select('drug_titles.drug_id','drug_titles.title','drug_titles.weight');
+            $results = $results->get()->unique('drug_id')->paginate(10);
+            return view('main.search.side_search_text', compact(['results','search']));
         }
     }
 }
