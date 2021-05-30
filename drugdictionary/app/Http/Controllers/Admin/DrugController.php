@@ -14,11 +14,13 @@ use App\Models\DrugImage;
 use App\Models\DrugLanguage;
 use App\Models\DrugTitle;
 use App\Models\SideEffect;
+
 use App\Models\SideEffectLanguage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
+
 
 
 class DrugController extends Controller

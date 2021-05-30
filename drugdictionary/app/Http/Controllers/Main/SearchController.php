@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Main;
 
 use App\Http\Controllers\Controller;
 use App\Models\Drug;
+use App\Models\DrugCategory;
+use App\Models\DrugCategoryLanguage;
 use App\Models\DrugLanguage;
 use App\Models\DrugTitle;
 use Illuminate\Http\Request;
@@ -13,6 +15,10 @@ use Illuminate\Support\Facades\Validator;
 
 class SearchController extends Controller
 {
+    const alphabetArrEng = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
+    const alphabetArrRus = ['А','Б','В','Г','Д','Е','Ж','З','И','Й','К','Л','М','Н','О','П','Р','С','Т','У','Ф','Х','Ц','Ч','Ш','Щ','Э','Ю','Я'];
+    const alphabetArrKaz = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
+
     public function searchText(Request $request)
     {
         $v = Validator::make($request->all(), [
@@ -44,16 +50,25 @@ class SearchController extends Controller
                 ->orderByRaw(
                     "case when `drug_titles`.`title` = '".$search."' then 0 else 1 end"
                 )
-                ->orderBy('weight')
-                ->select('drug_titles.drug_id','drug_languages.language', 'drug_titles.title', 'drug_languages.description',
+                ->orderBy('weight');
+            $results->select('drug_titles.drug_id','drug_languages.language', 'drug_titles.title', 'drug_languages.description',
                     'drug_languages.composition', 'drug_titles.weight');
-            $results = $results->get()->unique('drug_id');
-            return view('main.search.drug_search_text', compact(['results']));
+            $results = $results->get()->unique('drug_id')->paginate(10);
+            return view('main.search.drug_search_text', compact(['results','search']));
         }
     }
 
     public function searchDrugAlphabet($letter)
     {
+            //Alphabet for search
+            $alphabetArr = self::alphabetArrEng;
+            if (Cookie::get('lang') == 2){
+                $alphabetArr = self::alphabetArrRus;
+            }
+            else if (Cookie::get('lang') == 3){
+                $alphabetArr = self::alphabetArrKaz;
+            }
+
             $lang = null;
             if (Cookie::get('lang') == null) {
                 $lang = 1;
@@ -66,14 +81,27 @@ class SearchController extends Controller
                 ->orderBy('drug_id')
                 ->orderBy('weight')
                 ->select('drug_titles.drug_id', 'drug_titles.title', 'drug_titles.weight');
-            $results = $results->get()->unique('drug_id');
+            $results = $results->get()->unique('drug_id')->paginate(20);
             $two_letters = DB::select('SELECT UPPER(LEFT(title, 2)) as letter FROM drug_titles where language = :lang ORDER BY `letter` ASC',['lang'=>$lang]);
-            $letter = $letter[0];
-            return view('main.search.drug_search_alphabet', compact(['results','two_letters','letter']));
+            if ($lang == 1)
+                $letter = substr($letter, 0, 1);
+            else{
+                $letter = substr($letter, 0, 2);
+            }
+            return view('main.search.drug_search_alphabet', compact(['results','two_letters','letter','lang','alphabetArr']));
     }
 
     public function searchDrugNumber()
     {
+        //Alphabet for search
+        $alphabetArr = self::alphabetArrEng;
+        if (Cookie::get('lang') == 2){
+            $alphabetArr = self::alphabetArrRus;
+        }
+        else if (Cookie::get('lang') == 3){
+            $alphabetArr = self::alphabetArrKaz;
+        }
+
         $lang = null;
         if (Cookie::get('lang') == null) {
             $lang = 1;
@@ -86,8 +114,27 @@ class SearchController extends Controller
             ->orderBy('drug_id')
             ->orderBy('weight')
             ->select('drug_titles.drug_id', 'drug_titles.title', 'drug_titles.weight');
-        $results = $results->get()->unique('drug_id');
-        return view('main.search.drug_search_alphabet', compact(['results']));
+        $results = $results->get()->unique('drug_id')->paginate(20);
+        return view('main.search.drug_search_alphabet', compact(['results','alphabetArr']));
+    }
+
+    public function searchDrugCat($category)
+    {
+            $lang = null;
+            if (Cookie::get('lang') == null) {
+                $lang = 1;
+            } else {
+                $lang = intval(Cookie::get('lang'));
+            }
+
+            $results = DB::table('drug_titles')
+                ->join('drugs','drug_titles.drug_id','=','drugs.id')
+                ->where('drug_titles.language', '=', $lang)
+                ->where('drugs.drug_category_id', '=', $category)
+                ->orderBy('weight');
+            $results = $results->get()->unique('id')->paginate(20);
+            $drugCats = DrugCategoryLanguage::all()->where('language','=',Cookie::get('lang'));
+            return view('main.search.drug_search_cat', compact(['results','drugCats']));
     }
 
     public function searchDiseaseText(Request $request)
@@ -117,22 +164,5 @@ class SearchController extends Controller
             $results = $results->get()->unique('disease_id');
             return view('main.search.disease_search_text', compact(['results']));
         }
-    }
-
-    public function searchDiseaseAlphabet($letter)
-    {
-        $lang = null;
-        if (Cookie::get('lang') == null) {
-            $lang = 1;
-        } else {
-            $lang = intval(Cookie::get('lang'));
-        }
-        $results = DB::table('disease_languages')
-            ->where('disease_languages.language', '=', $lang)
-            ->where('disease_languages.title', 'LIKE', $letter . '%');
-        $results = $results->get()->unique('disease_id');
-        $two_letters = DB::select('SELECT UPPER(LEFT(title, 2)) as letter FROM disease_languages where language = :lang ORDER BY `letter` ASC',['lang'=>$lang]);
-        $letter = $letter;
-        return view('main.search.disease_search_alphabet', compact(['results','two_letters','letter']));
     }
 }

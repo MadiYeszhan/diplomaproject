@@ -7,7 +7,7 @@
         </section>
 
         <div class="container">
-            <h3 class=" fw-normal">Поиск лекарств от А до Я</h3>
+            <h3 class=" fw-normal">Поиск лекарств по категории</h3>
             <p class="lead fw-normal">
                 Приведенные ниже ресурсы помогут сузить поиск до конкретной целевой информации о лекарствах.
                 Информация доступна как потребителям, так и специалистам в области здравоохранения.
@@ -15,10 +15,6 @@
             <div class="">
                 <div class="d-flex flex-column position-static">
                     <div class="">
-                        @for($i = 0; $i < sizeof($alphabetArr); $i++)
-                            <a href="{{route('searchDrugAlphabet',$alphabetArr[$i])}}"><button type="button" class="btn btn-secondary alphabet-button mb-1">{{$alphabetArr[$i]}}</button></a>
-                        @endfor
-                        <a href="{{route('searchDrugNumber')}}"><button type="button" class="btn btn-secondary alphabet-button mb-1">0-9</button></a>
                     </div>
                 </div>
             </div>
@@ -28,7 +24,7 @@
             <div class="btn-group" id ="letters">
             </div>
 
-
+            @if($results->first() != null)
             <div class="row">
                 @php $i = 0; @endphp
                 @foreach($results as $drug)
@@ -40,6 +36,11 @@
                 @php $i++; @endphp
                 @endforeach
             </div>
+            @else
+                <h2>В данной категории отсутсвуют лекарства</h2>
+            @endif
+
+
         </div>
 
         @if ($results->lastPage() > 1)
@@ -79,6 +80,19 @@
             </div>
         @endif
     </div>
+    <div class="container py-5" id="featured-3">
+        <div class="row g-5 py-5">
+            <div class="feature col-md-4">
+                <h3>Список лекарств по категориям</h3>
+                <ul class="list-unstyled">
+                    @foreach($drugCats as $cat)
+                        <li><a class="text-secondary links" href="{{route('searchDrugCategory',$cat->id)}}">{{$cat->title}}</a></li>
+                    @endforeach
+                </ul>
+            </div>
+        </div>
+    </div>
+
     <div style="height: 15vw"></div>
 
     @isset($two_letters)

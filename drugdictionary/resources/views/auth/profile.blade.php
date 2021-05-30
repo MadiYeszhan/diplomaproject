@@ -1,79 +1,56 @@
 @extends('layouts.app')
-@section('head-content')
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
-@endsection
 @section('content')
-    <div class="content">
-        <section class="w-50 m-auto">
-            <h1>Profile</h1>
-            <div class="card">
-                <div class="card-header">
-                    <div class="d-flex align-items-center">
-                        <h2>Diseases</h2>
-                    </div>
-                </div>
-                <div class="card-body">
-                    @if(Auth::user()->diseases->first())
-                        @foreach(Auth::user()->diseases as $disease)
-                            <form action="{{route('removeDisease',$disease->id)}}" method="post">@csrf @method('DELETE')
-                            <div class="row mb-3">
-                                <div class="col-5">{{$disease->id}}</div>
-                                <div class="col-7">
-                                        <button title="Detach disease" type="submit" class="close text-danger " aria-label="Close"><span  aria-hidden="true">&times;</span></button>
-                                </div>
-                                </div>
-                            </form>
-                        @endforeach
-                    @else
-                        <h2>You did not add any diseases</h2>
+    <link href="{{ asset('css/profile.css') }}" rel="stylesheet" type="text/css">
+
+    <div class="container mt-5">
+        <h3>Ваш аккаунт</h3>
+        <div class="container">
+            <div class="row g-0 border rounded  mb-4 position-relative p-3">
+                <div>
+                    <h4 class="">Имя пользователя: {{Auth::user()->name}}</h4>
+                    <h4 class="">E-mail: {{Auth::user()->email}}</h4>
+                    <h4 class="">Дата создания аккаунта: {{Auth::user()->created_at}}</h4>
+                    @if(Auth::user()->roles->contains(2))
+                        <h4 class="">Ваши роли: @foreach(Auth::user()->roles as $role) {{$role->title}}@if($loop->iteration != $loop->count), @else @endif @endforeach</h4>
                     @endif
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal">Add</button>
-                </div>
-                <p>{{Auth::user()->role}}</p>
-
-
-
-                <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-lg" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">
-                                    Add disease
-                                </h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                            <form action="{{route('addDisease')}}" method="post" enctype="multipart/form-data">
-                            @csrf
-                            <h3>Disease</h3>
-                                <div class="form-group">
-                                    <label>Disease</label>
-                                    <select class="form-control"  name="disease_id" id="disease_id"  data-live-search="true">
-                                        @foreach($diseases as $disease)
-                                            @if($disease->disease_languages->first())
-                                            <option value="{{$disease->id}}">
-                                                {{$disease->disease_languages->first()->title}}
-                                            </option>
-                                            @endif
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="submit" class="btn btn-primary">Add</button>
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            </div>
-                            </form>
-                        </div>
-                    </div>
                 </div>
             </div>
-        </section>
+        </div>
+
+        <hr class="hr">
+        <div class="row justify-content-between pb-5 mt-5 ml-2">
+            <div class="col-sm-4">
+                <a class="profile-link" href="{{route('profile.settings')}}">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">Настройки</h5>
+                        <p class="card-text card-profile">Изменение пароля, почтового адресса, имени пользователя.</p>
+                    </div>
+                </div>
+                </a>
+            </div>
+            <div class="col-sm-4">
+                <a class="profile-link" href="{{route('profile.disease_list')}}">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">Противопоказания</h5>
+                        <p class="card-text card-profile">Выбор противопоказаний для выделения в составах.</p>
+                    </div>
+                </div>
+                </a>
+            </div>
+
+            <div class="col-sm-4">
+                <a class="profile-link" href="#">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">Ваши рецензий</h5>
+                        <p class="card-text card-profile">Список рецензий оставленных вами под различными лекарствами.</p>
+                    </div>
+                </div>
+                </a>
+            </div>
+        </div>
     </div>
-    <script>
-        $('#disease_id').selectpicker('render');
-    </script>
+    <div class="profile-footer"></div>
 @endsection

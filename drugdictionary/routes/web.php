@@ -27,10 +27,18 @@ use Illuminate\Support\Facades\Route;
 
 
 //Main routes
-Route::get('/', [MainController::class, 'drugs'])->name('main.index');
+Route::get('/', [MainController::class, 'index'])->name('main.index');
 Route::get('/drugs', [MainController::class, 'drugs'])->name('main.drugs');
 Route::get('/diseases', [MainController::class, 'diseases'])->name('main.diseases');
+Route::get('/pharmacies', [MainController::class, 'pharmacies'])->name('main.pharmacies');
+Route::get('/about', [MainController::class, 'about'])->name('main.about');
+Route::get('/contacts', [MainController::class, 'contacts'])->name('main.contacts');
+
+Route::get('/diseases', [MainController::class, 'diseases'])->name('main.diseases');
 Route::get('/language/{lang}', [MainController::class, 'changeLanguage'])->name('main.language');
+
+
+
 ///Details routes
 Route::get('/drugs/details/{id}', [MainController::class, 'drug'])->name('main.drugs.details');
 Route::get('/side_effects/details/{id}', [MainController::class, 'drugs'])->name('main.side_effects.details');
@@ -47,6 +55,7 @@ Route::get('/drugs/details/comment/{id}', [MainController::class, 'deleteComment
 Route::get('/drugs/search', [SearchController::class, 'searchText'])->name('searchText');
 Route::get('/drugs/alphabet/{letter}', [SearchController::class, 'searchDrugAlphabet'])->name('searchDrugAlphabet');
 Route::get('/drugs/number', [SearchController::class, 'searchDrugNumber'])->name('searchDrugNumber');
+Route::get('/drugs/category/{category}', [SearchController::class, 'searchDrugCat'])->name('searchDrugCategory');
 ///Search disease
 Route::get('/disease/search', [SearchController::class, 'searchDiseaseText'])->name('searchDiseaseText');
 Route::get('/disease/alphabet/{letter}', [SearchController::class, 'searchDiseaseAlphabet'])->name('searchDiseaseAlphabet');
@@ -73,7 +82,7 @@ Route::post('/login', [LoginController::class, 'login'])->name('login');
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/register', [RegisterController::class, 'registerForm'])->name('registerform');
 Route::post('/register', [RegisterController::class, 'register'])->name('register');
-Route::get('/profile', [ProfileController::class, 'profile'])->name('profile');
+
 Route::get('/email/verify', function () {return view('auth.verify');})->middleware(['auth'])->name('verification.notice');
 Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
     $request->fulfill();
@@ -85,7 +94,13 @@ Route::post('/email/verification-notification', function (Request $request) {
 })->middleware(['auth', 'throttle:6,1'])->name('verification.resend');
 
 //User profile routes
+Route::get('/profile', [ProfileController::class, 'profile'])->name('profile');
+Route::get('/profile/settings', [ProfileController::class, 'settings'])->name('profile.settings');
+Route::get('/profile/disease_list', [ProfileController::class, 'disease_list'])->name('profile.disease_list');
 Route::post('profile/addDisease', [ProfileController::class, 'addDisease'])->name('addDisease');
 Route::delete('profile/addDisease/{disease_id}', [ProfileController::class, 'removeDisease'])->name('removeDisease');
+
+
+
 
 

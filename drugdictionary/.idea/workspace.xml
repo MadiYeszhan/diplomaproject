@@ -160,24 +160,24 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/lang/kz" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/main/section" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Admin\diplomaproject\drugdictionary\resources\lang\kz" />
-      <recent name="C:\Users\Admin\diplomaproject\drugdictionary\resources\lang\ru" />
-      <recent name="C:\Users\Admin\diplomaproject\drugdictionary\resources\views\admin" />
-      <recent name="C:\Users\Admin\diplomaproject\drugdictionary\resources\views\admin\PharmacyLink" />
-      <recent name="C:\Users\Admin\diplomaproject\drugdictionary\resources\views\main" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Admin\diplomaproject\drugdictionary\resources\views" />
       <recent name="C:\Users\Admin\diplomaproject\drugdictionary\app\Http\Controllers" />
       <recent name="C:\Users\Admin\diplomaproject\drugdictionary\app\Http\Controllers\Admin" />
       <recent name="C:\Users\Admin\diplomaproject\drugdictionary\app\Models" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Admin\diplomaproject\drugdictionary\resources\views\main\section" />
+      <recent name="C:\Users\Admin\diplomaproject\drugdictionary\resources\views\auth" />
+      <recent name="C:\Users\Admin\diplomaproject\drugdictionary\resources\lang\kz" />
+      <recent name="C:\Users\Admin\diplomaproject\drugdictionary\resources\lang\ru" />
+      <recent name="C:\Users\Admin\diplomaproject\drugdictionary\resources\views\admin" />
     </key>
   </component>
   <component name="RunManager">
@@ -265,6 +265,15 @@
       <workItem from="1620119028753" duration="5746000" />
       <workItem from="1620143474813" duration="1979000" />
       <workItem from="1620303578555" duration="1682000" />
+      <workItem from="1621435831527" duration="121000" />
+      <workItem from="1621679849110" duration="3966000" />
+      <workItem from="1621687770145" duration="6022000" />
+      <workItem from="1621717042252" duration="2308000" />
+      <workItem from="1621867342997" duration="5466000" />
+      <workItem from="1622037734288" duration="526000" />
+      <workItem from="1622223950277" duration="8635000" />
+      <workItem from="1622282344431" duration="6397000" />
+      <workItem from="1622345107424" duration="7438000" />
     </task>
     <servers />
   </component>
@@ -288,18 +297,18 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="650" y="341" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1614967064713" />
-    <state x="698" y="319" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1620145402358">
+    <state x="698" y="319" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1622354655138">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="698" y="319" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1620145402358" />
+    <state x="698" y="319" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1622354655138" />
     <state x="795" y="462" key="NewPhpFileDialog" timestamp="1620303885662">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="795" y="462" key="NewPhpFileDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1620303885662" />
-    <state x="461" y="171" key="SettingsEditor" timestamp="1617955957725">
+    <state x="461" y="171" key="SettingsEditor" timestamp="1622223982343">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="461" y="171" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1617955957725" />
+    <state x="461" y="171" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1622223982343" />
     <state x="566" y="149" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1620144787476">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -308,10 +317,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="667" y="139" width="585" height="801" key="find.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1620042752058" />
-    <state x="571" y="276" key="run.anything.popup" timestamp="1616497274167">
+    <state x="571" y="276" key="run.anything.popup" timestamp="1621871461113">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="571" y="276" key="run.anything.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1616497274167" />
+    <state x="571" y="276" key="run.anything.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1621871461113" />
     <state x="623" y="235" width="672" height="678" key="search.everywhere.popup" timestamp="1616580342219">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>

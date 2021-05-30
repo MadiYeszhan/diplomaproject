@@ -5,34 +5,81 @@ namespace App\Http\Controllers\Main;
 use App\Http\Controllers\Controller;
 use App\Models\Disease;
 use App\Models\Drug;
+use App\Models\DrugCategory;
+use App\Models\DrugCategoryLanguage;
 use App\Models\DrugReview;
+use App\Models\DrugTitle;
+use App\Models\Manufacturer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use phpDocumentor\Reflection\Types\Collection;
 
 class MainController extends Controller
 {
+
+    const alphabetArrEng = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
+    const alphabetArrRus = ['А','Б','В','Г','Д','Е','Ж','З','И','Й','К','Л','М','Н','О','П','Р','С','Т','У','Ф','Х','Ц','Ч','Ш','Щ','Э','Ю','Я'];
+    const alphabetArrKaz = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
+
+
     //Index and Sections pages
     public function index()
     {
         //Alphabet for search
-        $alphabetArr = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
+        $alphabetArr = self::alphabetArrEng;
+        if (Cookie::get('lang') == 2){
+            $alphabetArr = self::alphabetArrRus;
+        }
+        else if (Cookie::get('lang') == 3){
+            $alphabetArr = self::alphabetArrKaz;
+        }
+
         return view('main.index',compact('alphabetArr'));
+    }
+
+    public function pharmacies()
+    {
+        return view('main.pharmacy');
+    }
+
+    public function contacts()
+    {
+        return view('main.contacts');
+    }
+
+    public function about()
+    {
+        return view('main.about');
     }
 
     public function drugs()
     {
         //Alphabet for search
-        $alphabetArr = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
-        return view('main.index',compact('alphabetArr'));
+        $alphabetArr = self::alphabetArrEng;
+        if (Cookie::get('lang') == 2){
+            $alphabetArr = self::alphabetArrRus;
+        }
+        else if (Cookie::get('lang') == 3){
+            $alphabetArr = self::alphabetArrKaz;
+        }
+
+        $lang = Cookie::get('lang');
+
+        $drugs = DrugTitle::orderBy('weight')->where('language','=',Cookie::get('lang'))->get()->unique('drug_id')->paginate(20);
+        $drugCats = DrugCategoryLanguage::all()->where('language','=',Cookie::get('lang'));
+        $manufacturers = Manufacturer::all()->forPage(1,10);
+        $rating = DB::table('drug_reviews')->where('language','=',Cookie::get('lang'))->selectRaw('drug_id, sum(rating)')->groupBy('drug_id');
+        return view('main.section.drug',compact(['alphabetArr','drugs','drugCats','manufacturers','rating','lang']));
     }
 
     public function diseases()
     {
         //Alphabet for search
-        $alphabetArr = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
+        $alphabetArr = self::alphabetArrEng;
         return view('main.diseases',compact('alphabetArr'));
     }
 
@@ -48,7 +95,7 @@ class MainController extends Controller
                 Cookie::queue('lang', 2, 60 * 60 * 30);
             else if ($lang == 3)
                 Cookie::queue('lang', 3, 60 * 60 * 30);
-            return redirect()->back();
+            return redirect()->route('main.index');
         }
     }
 
