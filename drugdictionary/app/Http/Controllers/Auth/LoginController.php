@@ -34,11 +34,11 @@ class LoginController extends Controller
             $rem = $request->has('remember');
             if (Auth::attempt($credentials, $rem)) {
                 if (Auth::user()) {
-                    return redirect()->route('admin.index');
+                    return redirect()->route('main.index');
                 } elseif (!Auth::user()->hasVerifiedEmail()) {
                     return redirect()->route('verification.notice');
                 } else
-                    return redirect()->route('admin.index');
+                    return redirect()->route('main.index');
             } else
                 return redirect()->route('loginform');
         }

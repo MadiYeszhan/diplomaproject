@@ -22,11 +22,20 @@
                 </div>
             </div>
             <hr class="hr">
+            @if(session('success'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <strong>Success!</strong> {{ session('success') }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            @endif
             <h3>Список противопоказаний</h3>
             <div class="row g-0 border rounded  mb-4 shadow-sm h-md-250 position-relative">
                 <div class="container p-3">
                     @if(Auth::user()->diseases->first())
                     <div class="card w-100">
+
                     <div class="table-responsive">
                         <table class="table" id="disease_table">
                             <thead>

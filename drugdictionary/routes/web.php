@@ -101,9 +101,11 @@ Route::post('/email/verification-notification', function (Request $request) {
 //User profile routes
 Route::get('/profile', [ProfileController::class, 'profile'])->name('profile');
 Route::get('/profile/settings', [ProfileController::class, 'settings'])->name('profile.settings');
+Route::put('/profile/settings', [ProfileController::class, 'saveSettings'])->name('profile.saveSettings');
 Route::get('/profile/disease_list', [ProfileController::class, 'disease_list'])->name('profile.disease_list');
 Route::post('profile/addDisease', [ProfileController::class, 'addDisease'])->name('addDisease');
 Route::delete('profile/addDisease/{disease_id}', [ProfileController::class, 'removeDisease'])->name('removeDisease');
+
 
 
 
