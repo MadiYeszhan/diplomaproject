@@ -166,18 +166,19 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Admin\diplomaproject\drugdictionary\resources\views" />
-      <recent name="C:\Users\Admin\diplomaproject\drugdictionary\app\Http\Controllers" />
-      <recent name="C:\Users\Admin\diplomaproject\drugdictionary\app\Http\Controllers\Admin" />
-      <recent name="C:\Users\Admin\diplomaproject\drugdictionary\app\Models" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Admin\diplomaproject\drugdictionary\resources\views\main\section" />
       <recent name="C:\Users\Admin\diplomaproject\drugdictionary\resources\views\auth" />
       <recent name="C:\Users\Admin\diplomaproject\drugdictionary\resources\lang\kz" />
       <recent name="C:\Users\Admin\diplomaproject\drugdictionary\resources\lang\ru" />
       <recent name="C:\Users\Admin\diplomaproject\drugdictionary\resources\views\admin" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Admin\diplomaproject\drugdictionary\resources\views\main\details" />
+      <recent name="C:\Users\Admin\diplomaproject\drugdictionary\resources\views" />
+      <recent name="C:\Users\Admin\diplomaproject\drugdictionary\app\Http\Controllers" />
+      <recent name="C:\Users\Admin\diplomaproject\drugdictionary\app\Http\Controllers\Admin" />
+      <recent name="C:\Users\Admin\diplomaproject\drugdictionary\app\Models" />
     </key>
   </component>
   <component name="RunManager">
@@ -276,6 +277,10 @@
       <workItem from="1622345107424" duration="7438000" />
       <workItem from="1622359053280" duration="5159000" />
       <workItem from="1622474488489" duration="3225000" />
+      <workItem from="1622534592989" duration="12481000" />
+      <workItem from="1622574028460" duration="3147000" />
+      <workItem from="1622652366259" duration="3000" />
+      <workItem from="1622652381047" duration="16000" />
     </task>
     <servers />
   </component>

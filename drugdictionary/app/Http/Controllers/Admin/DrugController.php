@@ -338,7 +338,7 @@ class DrugController extends Controller
                     }
                 }
             }
-            return redirect()->route('drugs.index')->with('success','Drug is created.');
+            return redirect()->route('drugs.index')->with('success','Drug is updated.');
         }
     }
 
@@ -383,6 +383,7 @@ class DrugController extends Controller
             $drug->manufacturers()->detach();
             $drug->side_effect->delete();
             $drug->contradiction->delete();
+
             $drug->delete();
             return redirect()->route('drugs.index')->with('success','Drug is deleted.');
         }

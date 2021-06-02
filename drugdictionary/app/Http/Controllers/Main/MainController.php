@@ -8,6 +8,7 @@ use App\Models\DiseaseLanguage;
 use App\Models\Drug;
 use App\Models\DrugCategory;
 use App\Models\DrugCategoryLanguage;
+use App\Models\DrugLanguage;
 use App\Models\DrugReview;
 use App\Models\DrugTitle;
 use App\Models\Manufacturer;
@@ -123,7 +124,11 @@ class MainController extends Controller
         }
 
         $drug = Drug::find($id);
-        if ($drug != null) {
+        if ($drug != null ) {
+            if ($drug->drug_titles()->where('language',$lang)->first() == null){
+                return redirect()->back();
+            }
+
             $pharmacies = collect();
             $drugLanguage = $drug->drug_languages->where('language', $lang)->first();
 
@@ -150,13 +155,33 @@ class MainController extends Controller
                         default:
                     }
                     if ($pharmacy_return != null){
+                        $pharmacy_return['pharmacy_link'] = $pharmacy->link;
                         $pharmacies->push($pharmacy_return);
                     }
                 }
                 $pharmacies = $pharmacies->sortBy(['available','price']);
             }
 
-            return view('main.details.drug', compact(['drug', 'lang', 'drugLanguage','pharmacies']));
+            $side_effect = $drug->side_effect->side_effect_languages->where('language','=',$lang);
+            $contradiction = $drug->contradiction->contradiction_languages->where('language','=',$lang);
+            $contradiction_diseases = $drug->contradiction->diseases;
+            $images = $drug->drug_images;
+            $rating = DB::table('drug_reviews')->where('drug_id','=',$drug->id)->selectRaw('sum(rating) / count(rating) as rating');
+            $rating = $rating->get()->first()->rating;
+            $comments = $drug->drug_reviews;
+
+            $related_drug = null;
+            if($drug->drug_id != null){
+                $related_drug = DrugTitle::orderBy('weight')
+                    ->where('language','=',Cookie::get('lang'))
+                    ->where('drug_id','=',$drug->drug_id)
+                    ->get()
+                    ->unique('drug_id')
+                    ->forPage(1,10);
+            }
+
+
+            return view('main.details.drug', compact(['drug', 'lang', 'drugLanguage','pharmacies','side_effect','contradiction','contradiction_diseases','rating','images','comments','related_drug']));
         }
         else {
             return redirect()->back();

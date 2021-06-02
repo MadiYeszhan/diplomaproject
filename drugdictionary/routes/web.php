@@ -44,6 +44,7 @@ Route::get('/language/{lang}', [MainController::class, 'changeLanguage'])->name(
 
 ///Details routes
 Route::get('/drugs/details/{id}', [MainController::class, 'drug'])->name('main.drugs.details');
+
 Route::get('/side_effects/details/{id}', [MainController::class, 'drugs'])->name('main.side_effects.details');
 Route::get('/diseases/details/{id}', [MainController::class, 'drugs'])->name('main.diseases.details');
 Route::get('/manufacturers/details/{id}', [MainController::class, 'drugs'])->name('main.manufacturers.details');

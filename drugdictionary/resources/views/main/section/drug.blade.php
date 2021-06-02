@@ -41,7 +41,7 @@
                      @if($i != 0)</div>@endif
                     <div class="col-3">
                     @endif
-                 <h3 class="overflow-hidden"><a href="">{{$drug->title}}</a></h3>
+                 <h3 class="overflow-hidden"><a href="{{route('main.drugs.details',$drug->drug_id)}}">{{$drug->title}}</a></h3>
                 @php $i++; @endphp
                 @endforeach
             </div>
@@ -101,9 +101,9 @@
                             @foreach($rating->get() as $drug)
                                 @php $title = \App\Models\DrugTitle::where('drug_id','=',$drug->drug_id)->where('language','=',$lang)->orderBy('weight')->first() @endphp
                                 @if($title != null)
-                                <li><a class="text-secondary links" href="#">{{$title->title}}</a></li>
+                                <li><a class="text-secondary links" href="{{route('main.drugs.details',$title->drug_id)}}">{{$title->title}}</a></li>
                                 @else
-                                <li><a class="text-secondary links" href="#">Нету</a></li>
+                                <li>Нету</li>
                                 @endif
                             @endforeach
                         @endif
