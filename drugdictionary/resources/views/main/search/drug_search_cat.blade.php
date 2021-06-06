@@ -32,7 +32,7 @@
                         @if($i != 0)</div>@endif
             <div class="col-3">
                 @endif
-                <h3 class="overflow-hidden"><a href="">{{$drug->title}}</a></h3>
+                <h3 class="overflow-hidden"><a href="{{route('main.drugs.details',$drug->id)}}">{{$drug->title}}</a></h3>
                 @php $i++; @endphp
                 @endforeach
             </div>

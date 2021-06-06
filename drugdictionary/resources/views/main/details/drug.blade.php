@@ -7,10 +7,16 @@
         </section>
         <div class="container">
             <div class="row align-items-start">
-                <div class="container"><h2>{{$drug->drug_titles()->where('language',$lang)->first()->title}}</h2></div>
+                <div class="container"><h2>{{$drug->drug_titles()->orderBy('weight')->where('language',$lang)->first()->title}}</h2></div>
                 @if($drugLanguage != null)
                 <div class="col-md-7">
                     <div class="mt-3">
+                        <p class="lead font-weight-bold">Apply in case:</p>
+                        @if($disease->first() != null)
+                            <p class="lead fw-normal"><a href="{{route('main.diseases.details',$disease->first()->disease_id)}}">{{$disease->first()->title}}</a></p>
+                        @else
+                            <p class="lead fw-normal">{{__('Disease')}}</p>
+                        @endif
                         <p class="lead font-weight-bold">Availability:</p>
                         <p class="lead fw-normal">{{$drugLanguage->availability}}</p>
                         <p class="lead font-weight-bold">Dosage:</p>
@@ -23,7 +29,7 @@
                         <p class="lead fw-normal">
                             @if($side_effect->first() != null)
                                 {{$side_effect->first()->general}}
-                                <a href="#">More details</a>
+                                <a href="{{route('main.side_effects.details',$drug->id)}}">More details</a>
                             @else
                                 Sorry, side effect is unavailable in your language
                             @endif
@@ -59,10 +65,12 @@
                         <p class="lead fw-normal">{{$drugLanguage->special_instructions}}</p>
 
                         @if($related_drug != null)
+                            @if($related_drug->first() != null)
                             <p class="lead font-weight-bold">Схожие лекарства:</p>
-                            @foreach($related_drug as $drug)
-                                <a href="{{route('main.drugs.details',$drug->drug_id)}}">{{$drug->title}}</a>
+                            @foreach($related_drug as $d)
+                                <a href="{{route('main.drugs.details',$d->drug_id)}}">{{$d->title}}</a>
                             @endforeach
+                            @endif
                         @endif
                     </div>
                 </div>
@@ -175,8 +183,6 @@
         </div>
         @endif
     </div>
-
-
 
     @if(!Auth::guest())
         @if(Auth::user()->roles->contains(2))

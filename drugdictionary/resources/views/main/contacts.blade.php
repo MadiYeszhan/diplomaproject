@@ -9,7 +9,7 @@
         <div class="container mt-5">
             <div class="row align-items-start">
                 <div class="col">
-                    <h5>Есжанов Мади</h5>
+                    <h5>{{__('main.contacts_softdev')}}</h5>
                     <ul class="list-unstyled">
                         <li><a class="link text-secondary" href="#">Вконтакте</a></li>
                         <li><a class="link text-secondary" href="#">Instagram</a></li>
@@ -18,7 +18,7 @@
                     </ul>
                 </div>
                 <div class="col">
-                    <h5>Арипов Расул</h5>
+                    <h5>{{__('main.contacts_front')}}</h5>
                     <ul class="list-unstyled text-small">
                         <li><a class="link text-secondary" href="#">Вконтакте</a></li>
                         <li><a class="link text-secondary" href="#">Instagram</a></li>

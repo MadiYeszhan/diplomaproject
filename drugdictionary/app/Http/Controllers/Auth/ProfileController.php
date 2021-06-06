@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\Disease;
 use App\Models\DiseaseLanguage;
+use App\Models\DrugReview;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -74,6 +75,12 @@ class ProfileController extends Controller
         }
         $diseases = DiseaseLanguage::all()->where('language','=',$lang);
         return view('auth.disease_list',compact(['diseases','lang']));
+    }
+
+    public function comments(){
+        $user = Auth::user();
+        $comments = DrugReview::where('user_id','=',$user->id)->get();
+        return view('auth.comments',compact(['comments']));
     }
 
     public function addDisease(Request $request){

@@ -29,13 +29,13 @@
                     <div class="collapse navbar-collapse" id="navbarCollapse">
                         <ul class="navbar-nav  mb-2 mb-md-0 mr-auto" >
                             <li class="nav-item">
-                                <a class="nav-link inks" href="{{route('main.pharmacies')}}">Аптеки</a>
+                                <a class="nav-link inks" href="{{route('main.pharmacies')}}">{{__('head.pharmacy')}}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link inks" href="{{route('main.contacts')}}">Контакты</a>
+                                <a class="nav-link inks" href="{{route('main.contacts')}}">{{__('head.contacts')}}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link inks" href="{{route('main.about')}}">О Нас</a>
+                                <a class="nav-link inks" href="{{route('main.about')}}">{{__('head.about_us')}}</a>
                             </li>
                         </ul>
                         <ul class="navbar-nav ml-auto">
@@ -59,13 +59,13 @@
                             @guest
                                 @if (Route::has('login'))
                                     <li class="nav-item">
-                                        <a class="nav-link inks" href="{{ route('login') }}">Login</a>
+                                        <a class="nav-link inks" href="{{ route('login') }}">{{__('head.login')}}</a>
                                     </li>
                                 @endif
 
                                 @if (Route::has('register'))
                                     <li class="nav-item">
-                                        <a class="nav-link inks" href="{{ route('register') }}">Register</a>
+                                        <a class="nav-link inks" href="{{ route('register') }}">{{__('head.register')}}</a>
                                     </li>
                                 @endif
 
@@ -76,9 +76,9 @@
                                     </a>
 
                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown" >
-                                        <a class="dropdown-item main-dropdown" href="{{ route('profile') }}">Profile</a>
+                                        <a class="dropdown-item main-dropdown" href="{{ route('profile') }}">{{__('head.profile')}}</a>
                                         <a class="dropdown-item main-dropdown" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">Logout</a>
+                                                     document.getElementById('logout-form').submit();">{{__('head.logout')}}</a>
                                     </div>
                                 </li>
 
@@ -104,19 +104,19 @@
                     <small class="d-block mb-3 text-muted">©2021</small>
                 </div>
                 <div class="col-6 col-md">
-                    <h5>О нас</h5>
+                    <h5>{{__('head.about_us')}}</h5>
                     <ul class="list-unstyled text-small">
-                        <li><a class="link-secondary" href="{{route('main.about')}}">О нас</a></li>
+                        <li><a class="link-secondary" href="{{route('main.about')}}">{{__('head.about_us')}}</a></li>
                         <li><a class="link-secondary" href="#">VK Yeszhanov Madi</a></li>
                         <li><a class="link-secondary" href="#">VK Aripov Rasul</a></li>
                     </ul>
                 </div>
                 <div class="col-6 col-md">
-                    <h5>Навигация</h5>
+                    <h5>{{__('head.navigation')}}</h5>
                     <ul class="list-unstyled text-small">
-                        <li><a class="link-secondary" href="{{route('main.pharmacies')}}">Аптеки</a></li>
-                        <li><a class="link-secondary" href="{{route('main.contacts')}}">Контакты</a></li>
-                        <li><a class="link-secondary" href="{{route('main.index')}}">Вернуться на главную</a></li>
+                        <li><a class="link-secondary" href="{{route('main.pharmacies')}}">{{__('head.pharmacy')}}</a></li>
+                        <li><a class="link-secondary" href="{{route('main.contacts')}}">{{__('head.contacts')}}</a></li>
+                        <li><a class="link-secondary" href="{{route('main.index')}}">{{__('head.return')}}</a></li>
                     </ul>
                 </div>
             </div>

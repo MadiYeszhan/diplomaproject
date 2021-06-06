@@ -17,12 +17,12 @@
         <div class="container">
             <div class="row">
                 @php $i = 0; @endphp
-                @foreach($manuf as $disease)
+                @foreach($manuf as $man)
                     @if(($i % 5 == 0) or $i == 0)
                      @if($i != 0)</div>@endif
                     <div class="col-3">
                     @endif
-                 <h3 class="overflow-hidden"><a href="">{{$disease->title}}</a></h3>
+                 <h3 class="overflow-hidden"><a href="{{route('main.manufacturers.details',$man->id)}}">{{$man->title}}</a></h3>
                 @php $i++; @endphp
                 @endforeach
             </div>

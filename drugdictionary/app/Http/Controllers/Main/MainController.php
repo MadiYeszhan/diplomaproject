@@ -12,6 +12,7 @@ use App\Models\DrugLanguage;
 use App\Models\DrugReview;
 use App\Models\DrugTitle;
 use App\Models\Manufacturer;
+use App\Models\SideEffect;
 use App\Models\SideEffectLanguage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
@@ -169,6 +170,7 @@ class MainController extends Controller
             $rating = DB::table('drug_reviews')->where('drug_id','=',$drug->id)->selectRaw('sum(rating) / count(rating) as rating');
             $rating = $rating->get()->first()->rating;
             $comments = $drug->drug_reviews;
+            $disease = $drug->disease->disease_languages->where('language','=',$lang);
 
             $related_drug = null;
             if($drug->drug_id != null){
@@ -181,7 +183,65 @@ class MainController extends Controller
             }
 
 
-            return view('main.details.drug', compact(['drug', 'lang', 'drugLanguage','pharmacies','side_effect','contradiction','contradiction_diseases','rating','images','comments','related_drug']));
+            return view('main.details.drug', compact(['drug', 'lang', 'drugLanguage','disease','pharmacies','side_effect','contradiction','contradiction_diseases','rating','images','comments','related_drug']));
+        }
+        else {
+            return redirect()->back();
+        }
+    }
+
+    public function side_effect($id)
+    {
+        $lang = null;
+        if (Cookie::get('lang') == null) {
+            $lang = 1;
+        } else {
+            $lang = intval(Cookie::get('lang'));
+        }
+
+        $drug = DrugTitle::orderBy('weight')->where('drug_id','=',$id)->where('language','=',$lang)->get()->first();
+        if ($drug != null) {
+            $drugMain = Drug::find($id);
+            $side_effect =  $drugMain->side_effect->side_effect_languages->where('language','=',$lang);
+            return view('main.details.side', compact(['drug', 'side_effect']));
+        }
+        else {
+            return redirect()->back();
+        }
+    }
+
+    public function disease($id)
+    {
+        $lang = null;
+        if (Cookie::get('lang') == null) {
+            $lang = 1;
+        } else {
+            $lang = intval(Cookie::get('lang'));
+        }
+
+        $disease = Disease::find($id);
+        if ($disease != null) {
+            $disease =  $disease->disease_languages->where('language','=',$lang)->first();
+            return view('main.details.disease', compact(['disease']));
+        }
+        else {
+            return redirect()->back();
+        }
+    }
+
+    public function manufacturer($id)
+    {
+        $lang = null;
+        if (Cookie::get('lang') == null) {
+            $lang = 1;
+        } else {
+            $lang = intval(Cookie::get('lang'));
+        }
+
+        $manufacturer = Manufacturer::find($id);
+        if ($manufacturer != null) {
+            $manufacturerLang =  $manufacturer->manufacturer_languages->where('language','=',$lang)->first();
+            return view('main.details.manufacturer', compact(['manufacturer','manufacturerLang']));
         }
         else {
             return redirect()->back();

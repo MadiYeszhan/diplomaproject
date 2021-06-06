@@ -44,10 +44,11 @@ Route::get('/language/{lang}', [MainController::class, 'changeLanguage'])->name(
 
 ///Details routes
 Route::get('/drugs/details/{id}', [MainController::class, 'drug'])->name('main.drugs.details');
+Route::get('/side_effects/details/{id}', [MainController::class, 'side_effect'])->name('main.side_effects.details');
+Route::get('/diseases/details/{id}', [MainController::class, 'disease'])->name('main.diseases.details');
+Route::get('/manufacturers/details/{id}', [MainController::class, 'manufacturer'])->name('main.manufacturers.details');
 
-Route::get('/side_effects/details/{id}', [MainController::class, 'drugs'])->name('main.side_effects.details');
-Route::get('/diseases/details/{id}', [MainController::class, 'drugs'])->name('main.diseases.details');
-Route::get('/manufacturers/details/{id}', [MainController::class, 'drugs'])->name('main.manufacturers.details');
+
 ///Comment creation routes
 Route::get('/drugs/details/{id}/comment', [MainController::class, 'createComment'])->name('main.drugs.createComment')->middleware(\App\Http\Middleware\MuteCheck::class);
 Route::post('/drugs/details/comment', [MainController::class, 'storeComment'])->name('main.drugs.storeComment')->middleware(\App\Http\Middleware\MuteCheck::class);
@@ -102,6 +103,8 @@ Route::post('/email/verification-notification', function (Request $request) {
 //User profile routes
 Route::get('/profile', [ProfileController::class, 'profile'])->name('profile');
 Route::get('/profile/settings', [ProfileController::class, 'settings'])->name('profile.settings');
+Route::get('/profile/comments', [ProfileController::class, 'comments'])->name('profile.comments');
+
 Route::put('/profile/settings', [ProfileController::class, 'saveSettings'])->name('profile.saveSettings');
 Route::get('/profile/disease_list', [ProfileController::class, 'disease_list'])->name('profile.disease_list');
 Route::post('profile/addDisease', [ProfileController::class, 'addDisease'])->name('addDisease');

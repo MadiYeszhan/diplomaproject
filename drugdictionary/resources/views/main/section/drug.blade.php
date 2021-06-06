@@ -109,14 +109,6 @@
                         @endif
                     </ul>
                 </div>
-                <div class="feature col-md-4">
-                    <h3>Производители</h3>
-                    <ul class="list-unstyled">
-                        @foreach($manufacturers as $manufacturer)
-                            <li><a class="text-secondary links" href="#">{{$manufacturer->title}}</a></li>
-                        @endforeach
-                    </ul>
-                </div>
             </div>
         </div>
 @endsection

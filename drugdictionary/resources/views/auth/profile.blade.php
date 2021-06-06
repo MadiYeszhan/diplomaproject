@@ -41,7 +41,7 @@
             </div>
 
             <div class="col-sm-4">
-                <a class="profile-link" href="#">
+                <a class="profile-link" href="{{route('profile.comments')}}">
                 <div class="card h-100">
                     <div class="card-body">
                         <h5 class="card-title">Ваши рецензий</h5>

@@ -1,25 +1,24 @@
 @extends('layouts.app')
 @section('content')
-    <div class="container">
-        <div class="row">
-            <div class="col-md-9">
-                <h1 class="mt-4">Main page</h1>
-                <h2>Welcome</h2>
-                <form action="{{route('searchText')}}" method="get">
-                <div class="input-group mb-1">
-                        <input type="text" name="search_drug" class="form-control" placeholder="Search">
-                        <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
+    <link href="{{ asset('css/druginfo.css') }}" rel="stylesheet" type="text/css">
+    <div class="content">
+        <section class="w-75 m-auto pt-5">
+        </section>
+        <div class="container">
+            <div class="row align-items-start">
+                @if($disease != null)
+                <div class="container"><h2>{{$disease->title}}</h2>  <a href="{{route('main.diseases')}}">Back to diseases</a></div>
+                <div class="col-md-7">
+                    <div class="mt-3">
+                        <p class="lead font-weight-bold">Description:</p>
+                        <p class="lead fw-normal">
+                            {{$disease->description}}
+                        </p>
+                    </div>
                 </div>
-                <div class="input-group mb-3">
-                    <p>
-                    @foreach($alphabetArr as $letter)
-                    <a href="{{route('searchDrugAlphabet',$letter)}}">{{$letter}}</a>
-                    @endforeach
-                    <a href="{{route('searchDrugNumber')}}">0-9</a>
-                    </p>
-                </div>
-                </form>
             </div>
         </div>
-    </div>
+    @else
+            <div class="container"><h2>No language for disease</h2>  <a href="{{route('main.diseases')}}">Back to diseases</a></div>
+    @endif
 @endsection
