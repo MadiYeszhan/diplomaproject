@@ -7,10 +7,9 @@
         </section>
 
         <div class="container">
-            <h3 class=" fw-normal">Производители</h3>
+            <h3 class=" fw-normal">{{__('section.manuf_search_title')}}</h3>
             <p class="lead fw-normal">
-                Приведенные ниже ресурсы помогут сузить поиск до конкретной целевой информации о производителях.
-                Информация доступна как потребителям, так и специалистам в области здравоохранения.
+                {{__('section.manuf_search_text')}}
             </p>
         </div>
 
@@ -33,10 +32,10 @@
                 <ul class="pagination">
                     @if(!$manuf->onFirstPage())
                         <li class="page-item {{ ($manuf->currentPage() == 1) ? ' disabled' : '' }}">
-                            <a class="page-link" href="{{ $manuf->url(1)}}">First</a>
+                            <a class="page-link" href="{{ $manuf->url(1)}}">{{__('section.pag_first')}}</a>
                         </li>
                         <li class="page-item {{ ($manuf->currentPage() == 1) ? ' disabled' : '' }}">
-                            <a class="page-link" href="{{ $manuf->url($manuf->currentPage()-1)}}">Previous</a>
+                            <a class="page-link" href="{{ $manuf->url($manuf->currentPage()-1)}}">{{__('section.pag_previous')}}</a>
                         </li>
                     @endif
                     @for ($i = 1; $i <= $manuf->currentPage()-1; $i++)
@@ -55,10 +54,10 @@
                     @endfor
                     @if($manuf->lastPage() != $manuf->currentPage())
                         <li class="page-item {{ ($manuf->currentPage() == $manuf->lastPage()) ? ' disabled' : '' }}">
-                            <a class="page-link" href="{{ $manuf->url($manuf->currentPage()+1) }}" >Next</a>
+                            <a class="page-link" href="{{ $manuf->url($manuf->currentPage()+1) }}" >{{__('section.pag_next')}}</a>
                         </li>
                         <li class="page-item {{ ($manuf->currentPage() == 1)}}">
-                            <a class="page-link" href="{{ $manuf->url($manuf->lastPage())}}">Last</a>
+                            <a class="page-link" href="{{ $manuf->url($manuf->lastPage())}}">{{__('section.pag_last')}}</a>
                         </li>
                     @endif
                 </ul>

@@ -18,8 +18,23 @@
 
                 @if(sizeof($results) > 0)
                     @foreach($results as $result)
-                        <div class="clearfix search-result overflow-hidden">
-                            <h4><a href="#">  {{$result->title}}</a></h4>
+                        <div class="clearfix  search-result overflow-hidden">
+                            <h4>
+
+
+                                <a href="#">  {{$result->title}}
+                                </a>
+                                @if($user_disease != null)
+                                    @if(App\Models\Contradiction::where('drug_id','=',$result->drug_id)->get()->first()->diseases->first())
+                                        @foreach($user_disease as $disease)
+                                            @if(App\Models\Contradiction::where('drug_id','=',$result->drug_id)->get()->first()->diseases->contains($disease))
+                                                <span style="color: red">In user's contradictions</span>
+                                                @break
+                                            @endif
+                                        @endforeach
+                                    @endif
+                                @endif
+                            </h4>
                             <p>@if($result->description != null){{$result->description}}) @else There is no description for this drug on picked language @endif</p>
                         </div>
                         <br>

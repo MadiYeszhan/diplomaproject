@@ -7,10 +7,9 @@
         </section>
 
         <div class="container">
-            <h3 class=" fw-normal">Поиск лекарств</h3>
+            <h3 class=" fw-normal">{{__('section.drug_search_title')}}</h3>
             <p class="lead fw-normal">
-                Приведенные ниже ресурсы помогут сузить поиск до конкретной целевой информации о лекарствах.
-                Информация доступна как потребителям, так и специалистам в области здравоохранения.
+                {{__('section.drug_search_text')}}
             </p>
             <div class="">
                 <div class="d-flex flex-column position-static">
@@ -28,8 +27,8 @@
             <form action="{{route('searchText')}}" method="get">
                 <section class="w-100 m-auto main-search">
                     <div class="input-group mb-3 mt-3">
-                        <input type="text" class="form-control" name="search_drug" style="border-radius: 10px;" placeholder="Поиск лекарств">
-                        <button type="submit" class="btn btn-success ml-1" style="border-radius: 10px">Поиск</button>
+                        <input type="text" class="form-control" name="search_drug" style="border-radius: 10px;" placeholder="{{__('section.drug_search_title')}}">
+                        <button type="submit" class="btn btn-success ml-1" style="border-radius: 10px">{{__('section.search_button')}}</button>
                     </div>
                 </section>
             </form>
@@ -52,10 +51,10 @@
                 <ul class="pagination">
                     @if(!$drugs->onFirstPage())
                         <li class="page-item {{ ($drugs->currentPage() == 1) ? ' disabled' : '' }}">
-                            <a class="page-link" href="{{ $drugs->url(1)}}">First</a>
+                            <a class="page-link" href="{{ $drugs->url(1)}}">{{__('section.pag_first')}}</a>
                         </li>
                         <li class="page-item {{ ($drugs->currentPage() == 1) ? ' disabled' : '' }}">
-                            <a class="page-link" href="{{ $drugs->url($drugs->currentPage()-1)}}">Previous</a>
+                            <a class="page-link" href="{{ $drugs->url($drugs->currentPage()-1)}}">{{__('section.pag_previous')}}</a>
                         </li>
                     @endif
                     @for ($i = 1; $i <= $drugs->currentPage()-1; $i++)
@@ -74,10 +73,10 @@
                     @endfor
                     @if($drugs->lastPage() != $drugs->currentPage())
                         <li class="page-item {{ ($drugs->currentPage() == $drugs->lastPage()) ? ' disabled' : '' }}">
-                            <a class="page-link" href="{{ $drugs->url($drugs->currentPage()+1) }}" >Next</a>
+                            <a class="page-link" href="{{ $drugs->url($drugs->currentPage()+1) }}" >{{__('section.pag_next')}}</a>
                         </li>
                         <li class="page-item {{ ($drugs->currentPage() == 1)}}">
-                            <a class="page-link" href="{{ $drugs->url($drugs->lastPage())}}">Last</a>
+                            <a class="page-link" href="{{ $drugs->url($drugs->lastPage())}}">{{__('section.pag_last')}}</a>
                         </li>
                     @endif
                 </ul>
@@ -87,7 +86,7 @@
         <div class="container py-5" id="featured-3">
             <div class="row g-5 py-5">
                 <div class="feature col-md-4">
-                    <h3>Список лекарств по категориям</h3>
+                    <h3>{{__('section.drug_search_category')}}</h3>
                     <ul class="list-unstyled">
                         @foreach($drugCats as $cat)
                         <li><a class="text-secondary links" href="{{route('searchDrugCategory',$cat->id)}}">{{$cat->title}}</a></li>
@@ -95,7 +94,7 @@
                     </ul>
                 </div>
                 <div class="feature col-md-4">
-                    <h3>Популярные лекарства</h3>
+                    <h3>{{__('section.drug_search_rating')}}</h3>
                     <ul class="list-unstyled">
                         @if(sizeof($rating->get()) > 0)
                             @foreach($rating->get() as $drug)
@@ -103,7 +102,7 @@
                                 @if($title != null)
                                 <li><a class="text-secondary links" href="{{route('main.drugs.details',$title->drug_id)}}">{{$title->title}}</a></li>
                                 @else
-                                <li>Нету</li>
+                                <li>{{__('section.nothing')}}</li>
                                 @endif
                             @endforeach
                         @endif

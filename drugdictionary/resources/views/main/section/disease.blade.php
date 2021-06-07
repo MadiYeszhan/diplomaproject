@@ -7,10 +7,9 @@
         </section>
 
         <div class="container">
-            <h3 class=" fw-normal">Поиск болезней</h3>
+            <h3 class=" fw-normal">{{__('section.disease_search_title')}}</h3>
             <p class="lead fw-normal">
-                Приведенные ниже ресурсы помогут сузить поиск до конкретной целевой информации о болезнях.
-                Информация доступна как потребителям, так и специалистам в области здравоохранения.
+                {{__('section.disease_search_text')}}
             </p>
         </div>
 
@@ -18,8 +17,8 @@
             <form action="{{route('searchDiseaseText')}}" method="get">
                 <section class="w-100 m-auto main-search">
                     <div class="input-group mb-3 mt-3">
-                        <input type="text" class="form-control" name="search_disease" style="border-radius: 10px;" placeholder="Поиск болезней">
-                        <button type="submit" class="btn btn-success ml-1" style="border-radius: 10px">Поиск</button>
+                        <input type="text" class="form-control" name="search_disease" style="border-radius: 10px;" placeholder="{{__('section.disease_search_title')}}">
+                        <button type="submit" class="btn btn-success ml-1" style="border-radius: 10px">{{__('section.search_button')}}</button>
                     </div>
                 </section>
             </form>
@@ -42,10 +41,10 @@
                 <ul class="pagination">
                     @if(!$diseases->onFirstPage())
                         <li class="page-item {{ ($diseases->currentPage() == 1) ? ' disabled' : '' }}">
-                            <a class="page-link" href="{{ $diseases->url(1)}}">First</a>
+                            <a class="page-link" href="{{ $diseases->url(1)}}">{{__('section.pag_first')}}</a>
                         </li>
                         <li class="page-item {{ ($diseases->currentPage() == 1) ? ' disabled' : '' }}">
-                            <a class="page-link" href="{{ $diseases->url($diseases->currentPage()-1)}}">Previous</a>
+                            <a class="page-link" href="{{ $diseases->url($diseases->currentPage()-1)}}">{{__('section.pag_previous')}}</a>
                         </li>
                     @endif
                     @for ($i = 1; $i <= $diseases->currentPage()-1; $i++)
@@ -64,10 +63,10 @@
                     @endfor
                     @if($diseases->lastPage() != $diseases->currentPage())
                         <li class="page-item {{ ($diseases->currentPage() == $diseases->lastPage()) ? ' disabled' : '' }}">
-                            <a class="page-link" href="{{ $diseases->url($diseases->currentPage()+1) }}" >Next</a>
+                            <a class="page-link" href="{{ $diseases->url($diseases->currentPage()+1) }}" >{{__('section.pag_next')}}</a>
                         </li>
                         <li class="page-item {{ ($diseases->currentPage() == 1)}}">
-                            <a class="page-link" href="{{ $diseases->url($diseases->lastPage())}}">Last</a>
+                            <a class="page-link" href="{{ $diseases->url($diseases->lastPage())}}">{{__('section.pag_last')}}</a>
                         </li>
                     @endif
                 </ul>

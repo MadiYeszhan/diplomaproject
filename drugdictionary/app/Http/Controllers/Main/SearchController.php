@@ -3,12 +3,15 @@
 namespace App\Http\Controllers\Main;
 
 use App\Http\Controllers\Controller;
+use App\Models\Contradiction;
 use App\Models\Drug;
 use App\Models\DrugCategory;
 use App\Models\DrugCategoryLanguage;
 use App\Models\DrugLanguage;
 use App\Models\DrugTitle;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
@@ -54,7 +57,20 @@ class SearchController extends Controller
             $results->select('drug_titles.drug_id','drug_languages.language', 'drug_titles.title', 'drug_languages.description',
                     'drug_languages.composition', 'drug_titles.weight');
             $results = $results->get()->unique('drug_id')->paginate(10);
-            return view('main.search.drug_search_text', compact(['results','search']));
+            $user_disease = null;
+            if (!Auth::guest()){
+                if (Auth::user()->diseases->first() != null)
+                {
+                    $user_disease = Auth::user()->diseases;
+                }
+            }
+
+
+
+
+
+
+            return view('main.search.drug_search_text', compact(['results','search','user_disease']));
         }
     }
 
