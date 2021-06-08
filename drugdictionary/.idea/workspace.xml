@@ -160,25 +160,25 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/img" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Admin\diplomaproject\drugdictionary\resources\views\main\section" />
-      <recent name="C:\Users\Admin\diplomaproject\drugdictionary\resources\views\auth" />
-      <recent name="C:\Users\Admin\diplomaproject\drugdictionary\resources\lang\kz" />
-      <recent name="C:\Users\Admin\diplomaproject\drugdictionary\resources\lang\ru" />
-      <recent name="C:\Users\Admin\diplomaproject\drugdictionary\resources\views\admin" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Admin\diplomaproject\drugdictionary\resources\views\main\details" />
       <recent name="C:\Users\Admin\diplomaproject\drugdictionary\resources\views" />
       <recent name="C:\Users\Admin\diplomaproject\drugdictionary\app\Http\Controllers" />
       <recent name="C:\Users\Admin\diplomaproject\drugdictionary\app\Http\Controllers\Admin" />
       <recent name="C:\Users\Admin\diplomaproject\drugdictionary\app\Models" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Admin\diplomaproject\drugdictionary\public\img" />
+      <recent name="C:\Users\Admin\diplomaproject\drugdictionary\resources\views\main\section" />
+      <recent name="C:\Users\Admin\diplomaproject\drugdictionary\resources\views\auth" />
+      <recent name="C:\Users\Admin\diplomaproject\drugdictionary\resources\lang\kz" />
+      <recent name="C:\Users\Admin\diplomaproject\drugdictionary\resources\lang\ru" />
     </key>
   </component>
   <component name="RunManager">
@@ -290,6 +290,8 @@
       <workItem from="1623091587524" duration="3195000" />
       <workItem from="1623131166312" duration="8057000" />
       <workItem from="1623152413322" duration="4196000" />
+      <workItem from="1623172566745" duration="1497000" />
+      <workItem from="1623174094321" duration="3377000" />
     </task>
     <servers />
   </component>

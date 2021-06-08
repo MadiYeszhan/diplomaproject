@@ -43,8 +43,8 @@ $(document).ready(function(){
 
     var i_img = 0;
 
-
     $('#disease_id').selectpicker('render');
+    $('#manufacturer_id').selectpicker('render');
     $('#drug_id').selectpicker('render');
     $("#add_image").click(function() {
         i_img++;

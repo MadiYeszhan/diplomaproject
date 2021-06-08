@@ -94,4 +94,23 @@ class AdminController extends Controller
             return redirect()->back()->with('success', 'User is not deleted.');
         }
     }
+
+    public function moderUser(Request $request)
+    {
+        $user = User::find($request->input('user_id'));
+        if ($user->id != null) {
+            if ($request->input('delete') == 0) {
+                $user->roles()->attach(2);
+                return redirect()->back()->with('success', 'User is now moderator.');
+            }
+            else{
+                $user->roles()->detach(2);
+                return redirect()->back()->with('success', 'User deleted from moderators.');
+            }
+
+        }
+        else{
+            return redirect()->back()->with('success', 'User is not deleted.');
+        }
+    }
 }

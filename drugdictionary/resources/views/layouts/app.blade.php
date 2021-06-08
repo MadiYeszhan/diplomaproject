@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="{{ asset('img/drugs.png') }}">
     <!--  Jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!--  Bootstrap -->
@@ -38,6 +39,7 @@
                                 <a class="nav-link inks" href="{{route('main.about')}}">{{__('head.about_us')}}</a>
                             </li>
                         </ul>
+
                         <ul class="navbar-nav ml-auto">
                             <li class="nav-item dropdown ">
                                 <a class="nav-link dropdown-toggle inks" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

@@ -14,6 +14,7 @@ use App\Models\DrugCategoryLanguage;
 use App\Models\DrugImage;
 use App\Models\DrugLanguage;
 use App\Models\DrugTitle;
+use App\Models\Manufacturer;
 use App\Models\SideEffect;
 
 use App\Models\SideEffectLanguage;
@@ -198,13 +199,19 @@ class DrugController extends Controller
                 array_push($diseaseArr, ['tag' => $diseaseLang->first()->title,'value' => $disease->id]);
             }
         }
+
+        $manufacturerArr = array();
+        foreach (Manufacturer::all() as $man){
+                array_push($manufacturerArr, ['tag' => $man->first()->title,'value' => $man->id]);
+        }
+
         $diseaseContradiction = "";
         if ($drug->contradiction != null){
         foreach ($drug->contradiction->diseases as $disease){
             $diseaseContradiction .= $disease->id.',';
         }}
         $drugImagesSize = sizeof($drug->drug_images);
-        return view('admin.Drug.edit',compact(['diseaseArr','drugCategories','drugs','drug','diseaseContradiction','drugImagesSize']));
+        return view('admin.Drug.edit',compact(['diseaseArr','drugCategories','drugs','drug','diseaseContradiction','drugImagesSize','manufacturerArr']));
     }
 
     public function destroyDrugTitle(DrugTitle $drugTitle)
@@ -275,6 +282,13 @@ class DrugController extends Controller
                 foreach (explode(',', $request->input('contradiction_diseases')) as $disease){
                     $contradiction->diseases()->attach($disease);
                 }
+            }
+
+            if ($request->input('manufacturer_id') != -1) {
+                $drug->manufacturers()->attach($disease);
+            }
+            else{
+                $drug->manufacturers()->detach();
             }
 
             for ($i = 1; $i < 4; $i++){

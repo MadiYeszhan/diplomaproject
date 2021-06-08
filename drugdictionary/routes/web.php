@@ -83,6 +83,8 @@ Route::get('/admin/users/', [\App\Http\Controllers\AdminController::class, 'show
 Route::post('/admin/users/', [\App\Http\Controllers\AdminController::class, 'muteUser'])->name('admin.users.mute');
 Route::delete('/admin/users/{user}', [\App\Http\Controllers\AdminController::class, 'destroyUser'])->name('admin.users.delete');
 
+Route::put('/admin/users/', [\App\Http\Controllers\AdminController::class, 'moderUser'])->name('admin.users.moder');
+
 //User Authentication routes
 Route::get('/login', [LoginController::class, 'loginForm'])->name('loginform');
 Route::post('/login', [LoginController::class, 'login'])->name('login');

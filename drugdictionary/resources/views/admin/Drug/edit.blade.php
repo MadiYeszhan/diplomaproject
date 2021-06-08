@@ -137,6 +137,22 @@
                             </div>
 
                             <div class="form-group">
+                                <label>Manufacturer</label>
+
+                                <select class="form-control"  name="manufacturer_id" id="manufacturer_id"  data-live-search="true">
+                                    <option value="-1" selected="selected">
+                                        No manufacturer
+                                    </option>
+
+                                    @foreach($manufacturerArr as $man)
+                                        <option value="{{$man['value']}}">
+                                            {{$man['tag']}}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                            <div class="form-group">
                                 <div id="drug_titles">
                                     <div class="form-group" id="drug_images">
                                         <label>Images</label>
