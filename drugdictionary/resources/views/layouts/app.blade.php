@@ -77,6 +77,9 @@
 
                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown" >
                                         <a class="dropdown-item main-dropdown" href="{{ route('profile') }}">{{__('head.profile')}}</a>
+                                        @if(Auth::user()->roles->contains(2))
+                                            <a class="dropdown-item main-dropdown" href="{{ route('admin.index') }}">Enter as admin</a>
+                                        @endif
                                         <a class="dropdown-item main-dropdown" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">{{__('head.logout')}}</a>
                                     </div>

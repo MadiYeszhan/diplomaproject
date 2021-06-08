@@ -21,7 +21,9 @@
 
                         <p class="lead font-weight-bold">{{__('details.description')}}</p>
                         <p class="lead fw-normal">
-                            {{$disease->description}}
+                            @php
+                            echo html_entity_decode($disease->description);
+                            @endphp
                         </p>
                     </div>
                 </div>
