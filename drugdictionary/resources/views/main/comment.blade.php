@@ -7,12 +7,12 @@
     <div class="container m-auto w-50">
         <div class="row">
             <div class="col-md-9">
-                <h1 class="mt-5">Add review</h1>
+                <h1 class="mt-5">{{__('details.add_review')}}</h1>
                 <h3>{{$drug->drug_titles()->where('language',$lang)->first()->title}}</h3>
                 <form action="{{route('main.drugs.storeComment')}}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
-                        <label>Disease or condition</label>
+                        <label>{{__('details.cond_review')}}</label>
                         <select class="form-control"  name="disease_id" id="disease_id"  data-live-search="true" required>
                             @foreach($diseases as $disease)
                                 @if($disease->disease_languages->first())
@@ -25,19 +25,19 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="col-form-label">Comment:</label>
+                        <label class="col-form-label">{{__('details.comment_review')}}:</label>
                         <textarea class="form-control" name="comment"  rows="4" cols="50" required></textarea>
                     </div>
 
                     <div class="form-group">
-                        <label class="col-form-label">Rating:</label>
+                        <label class="col-form-label">{{__('details.rating')}}:</label>
                         <div id="rangeValue">1</div>
                         <input class="form-control" style="width:10vw" type="range" id="myRange" name="rating" value="0" step="0.5" max="10" min="0" required>
                     </div>
                     <input type="hidden" name="drug_id" value="{{$drug->id}}">
                     <input type="hidden" name="lang" value="{{$lang}}">
                     <div class="input-group">
-                    <button type="submit" class="btn btn-primary">Add review</button>
+                    <button type="submit" class="btn btn-primary">{{__('details.add_review')}}</button>
                     </div>
                 </form>
             </div>

@@ -7,22 +7,22 @@
         <div class="container">
             <div class="row align-items-start">
                 @if($manufacturer != null)
-                <div class="container"><h2>{{$manufacturer->title}}</h2>  <a href="{{route('main.manufacturers')}}">Back to manufacturers</a></div>
+                <div class="container"><h2>{{$manufacturer->title}}</h2></div>
                 <div class="col-md-7">
                     <div class="mt-3">
-                        <p class="lead font-weight-bold">Year foundation:</p>
+                        <p class="lead font-weight-bold">{{__('details.manuf_found')}}</p>
                         <p class="lead fw-normal">
                             {{$manufacturer->year_foundation}}
                         </p>
 
                         @if($manufacturer->year_termination != null)
-                        <p class="lead font-weight-bold">Year termination:</p>
+                        <p class="lead font-weight-bold">{{__('details.manuf_term')}}</p>
                         <p class="lead fw-normal">
                             {{$manufacturer->year_termination}}
                         </p>
                         @endif
 
-                        <p class="lead font-weight-bold">Description:</p>
+                        <p class="lead font-weight-bold">{{__('details.description')}}</p>
                         <p class="lead fw-normal">
                             @if($manufacturerLang != null)
                             {{$manufacturerLang->description}}
@@ -33,6 +33,6 @@
             </div>
         </div>
     @else
-            <div class="container"><h2>No language for disease</h2>  <a href="{{route('main.manufacturers')}}">Back to diseases</a></div>
+            <div class="container"><h2>{{__('details.description_no')}}</h2> </div>
     @endif
 @endsection

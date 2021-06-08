@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Middleware\ModeratorCheck;
+use App\Http\Middleware\MuteCheck;
 use App\Models\Drug;
 use App\Models\DrugCategory;
 use App\Models\DrugCategoryLanguage;
@@ -16,6 +18,12 @@ use Illuminate\Support\Facades\Validator;
 
 class AdminController extends Controller
 {
+
+    public function __construct(){
+        $this->middleware([ModeratorCheck::class]);
+    }
+
+
     public function index()
     {
         //main admin page

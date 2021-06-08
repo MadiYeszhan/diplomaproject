@@ -11,42 +11,55 @@
                 @if($drugLanguage != null)
                 <div class="col-md-7">
                     <div class="mt-3">
-                        <p class="lead font-weight-bold">Apply in case:</p>
+                        <p class="lead font-weight-bold">{{__('details.case')}}</p>
                         @if($disease->first() != null)
                             <p class="lead fw-normal"><a href="{{route('main.diseases.details',$disease->first()->disease_id)}}">{{$disease->first()->title}}</a></p>
                         @else
                             <p class="lead fw-normal">{{__('Disease')}}</p>
                         @endif
-                        <p class="lead font-weight-bold">Availability:</p>
+                        <p class="lead font-weight-bold">{{__('details.avail')}}</p>
                         <p class="lead fw-normal">{{$drugLanguage->availability}}</p>
-                        <p class="lead font-weight-bold">Dosage:</p>
+                        <p class="lead font-weight-bold">{{__('details.dosage')}}</p>
                         <p class="lead fw-normal">{{$drugLanguage->dosage}}</p>
-                        <p class="lead font-weight-bold">Composition:</p>
+                        <p class="lead font-weight-bold">{{__('details.comp')}}</p>
                         <p class="lead fw-normal">{{$drugLanguage->composition}}</p>
-                        <p class="lead font-weight-bold">Main description:</p>
+                        <p class="lead font-weight-bold">{{__('details.description')}}</p>
                         <p class="lead fw-normal">{{$drugLanguage->description}}</p>
-                        <p class="lead font-weight-bold">Side effects:</p>
+                        <p class="lead font-weight-bold">{{__('details.side')}}</p>
                         <p class="lead fw-normal">
                             @if($side_effect->first() != null)
                                 {{$side_effect->first()->general}}
-                                <a href="{{route('main.side_effects.details',$drug->id)}}">More details</a>
+                                <a href="{{route('main.side_effects.details',$drug->id)}}">{{__('details.side_more')}}</a>
                             @else
-                                Sorry, side effect is unavailable in your language
+                                {{__('details.side_no')}}
                             @endif
                         </p>
 
-                        <p class="lead font-weight-bold">Contradictions:</p>
-
+                        <p class="lead font-weight-bold">{{__('details.cont')}}</p>
                         <p class="lead fw-normal">
                             @if($contradiction->first() != null)
                                 {{$contradiction->first()->description}}
                             @else
-                                Sorry, contradiction is unavailable in your language
+                                {{__('details.cont_no')}}
                             @endif
                         </p>
+
+                        <p class="lead fw-normal">
+                            @if($drug->child_contradiction)
+                                {{__('details.child_cont')}}
+                            @endif
+                        </p>
+
+                        <p class="lead fw-normal">
+                            @if($drug->pregnancy_contradiction)
+                                {{__('details.pregnancy_cont')}}
+                            @endif
+                        </p>
+
+
                         @if($contradiction_diseases->first() != null)
                         <p class="lead fw-normal">
-                            List of diseases for which this drug should not be used:
+                            {{__('details.cont_list')}}
                         </p>
                         <p class="lead fw-normal">
                             @foreach($contradiction_diseases as $disease)
@@ -58,15 +71,19 @@
                         </p>
                         @endif
 
-                        <p class="lead font-weight-bold">Interactions:</p>
+
+
+
+
+                        <p class="lead font-weight-bold">{{__('details.inter')}}</p>
                         <p class="lead fw-normal">{{$drugLanguage->drug_interaction}}</p>
 
-                        <p class="lead font-weight-bold">Special instructions:</p>
+                        <p class="lead font-weight-bold">{{__('details.special')}}</p>
                         <p class="lead fw-normal">{{$drugLanguage->special_instructions}}</p>
 
                         @if($related_drug != null)
                             @if($related_drug->first() != null)
-                            <p class="lead font-weight-bold">Схожие лекарства:</p>
+                            <p class="lead font-weight-bold">{{__('details.drug_group')}}</p>
                             @foreach($related_drug as $d)
                                 <a href="{{route('main.drugs.details',$d->drug_id)}}">{{$d->title}}</a>
                             @endforeach
@@ -78,7 +95,7 @@
 
                     <div class="col-md-7" style="height: 10vw">
                         <div class="mt-3"  >
-                            <p class="lead font-weight-bold">Sorry, description is unavailable in your language</p>
+                            <p class="lead font-weight-bold">{{__('details.description_no')}}</p>
                         </div>
                     </div>
 
@@ -86,19 +103,19 @@
                 <div class="col">
                     <div class="text-center">
                         <div class="rating-area">
-                            <h3>Rating</h3>
+                            <h3>{{__('details.rating')}}</h3>
                             @if($rating != null)
                             <div class="progress position-relative">
                                 <div class="progress-bar bg-success" role="progressbar" style="width: {{(number_format($rating, 1, '.', '')/10)*100}}%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                                 <p style="font-size: 14px" class="justify-content-center d-flex position-absolute w-100">{{number_format($rating, 1, '.', '')}}</p>
                             </div>
                             @else
-                                This drug is not rated yet.
+                                {{__('details.rating_no')}}
                             @endif
                         </div>
 
                         @if($images->first() != null)
-                            <h4>Фотографии лекарства</h4>
+                            <h4>{{__('details.image')}}</h4>
                             <div>
                             @foreach($images as $image)
                                 @php
@@ -109,6 +126,7 @@
                             </div>
                         @endif
                     </div>
+                    @if($lang >= 2)
                     @if(sizeof($pharmacies) > 0)
                     <div class="content pt-5">
                         <h4>Лекарство в аптеках</h4>
@@ -134,6 +152,7 @@
                         </table>
                     </div>
                     @endif
+                    @endif
                 </div>
             </div>
         </div>
@@ -143,12 +162,12 @@
             <div class="input-group mb-3">
                 @if(!Auth::guest())
                     @if(Auth::user()->mute == null)
-                        <a class="btn btn-primary" href="{{route('main.drugs.createComment',$drug->id)}}">Add review</a>
+                        <a class="btn btn-primary" href="{{route('main.drugs.createComment',$drug->id)}}">{{__('details.add_review')}}</a>
                     @else
-                        <p>You have been muted until {{Auth::user()->mute->mute_time}}</p>
+                        <p>{{__('details.mute')}} {{Auth::user()->mute->mute_time}}</p>
                     @endif
                 @else
-                    <p>Only authorized users can add an review.</p>
+                    <p>{{__('details.review_no')}}</p>
                 @endif
             </div>
         </div>
@@ -161,13 +180,13 @@
                     <div class="bg-white p-2">
                         <div class="d-flex flex-row user-info">
                             <div class="d-flex flex-column justify-content-start"><span class="d-block font-weight-bold name">{{\App\Models\User::find($comment->user_id)->name}}</span><span class="date text-black-50"></span></div>
-                            <div class="d-flex flex-column justify-content-start ml-2">Rating: {{$comment->rating}} </div>
+                            <div class="d-flex flex-column justify-content-start ml-2">{{__('details.rating')}}: {{$comment->rating}} </div>
                         </div>
                         <div class="mt-2">
                             <p class="comment-text">{{$comment->comment}}</p>
                             @if(!Auth::guest())
                                 @if($comment->user_id == Auth::user()->id or Auth::user()->roles->contains(2))
-                                    <a href="{{route('main.drugs.deleteComment',$comment->id)}}" class="text-danger">Delete</a>
+                                    <a href="{{route('main.drugs.deleteComment',$comment->id)}}" class="text-danger">{{__('details.delete_review')}}</a>
                                 @endif
                                 @if(Auth::user()->roles->contains(2))
                                     <a></a> <button data-id="{{$comment->user_id}}" data-toggle="modal" data-target="#modal" title="Mute" class="button-link d-inline pb-2 modal-button text-secondary">

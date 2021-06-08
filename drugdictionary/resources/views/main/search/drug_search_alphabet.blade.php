@@ -7,10 +7,9 @@
         </section>
 
         <div class="container">
-            <h3 class=" fw-normal">Поиск лекарств от А до Я <a href="{{route('main.drugs')}}" class="ml-4" style="font-size: 14px">Back to drugs section</a></h3>
+            <h3 class=" fw-normal">{{__('search.drug_alpha')}} <a href="{{route('main.drugs')}}" class="ml-4" style="font-size: 14px">{{__('search.drug_back')}}</a></h3>
             <p class="lead fw-normal">
-                Приведенные ниже ресурсы помогут сузить поиск до конкретной целевой информации о лекарствах.
-                Информация доступна как потребителям, так и специалистам в области здравоохранения.
+                {{__('section.drug_search_text')}}
             </p>
             <div class="">
                 <div class="d-flex flex-column position-static">
@@ -36,7 +35,7 @@
                         @if($i != 0)</div>@endif
             <div class="col-3">
                 @endif
-                <h3 class="overflow-hidden"><a href="">{{$drug->title}}</a></h3>
+                <h3 class="overflow-hidden"><a href="{{route('main.drugs.details',$drug->drug_id)}}">{{$drug->title}}</a></h3>
                 @php $i++; @endphp
                 @endforeach
             </div>
@@ -47,10 +46,10 @@
                 <ul class="pagination">
                     @if(!$results->onFirstPage())
                         <li class="page-item {{ ($results->currentPage() == 1) ? ' disabled' : '' }}">
-                            <a class="page-link" href="{{ $results->url(1)}}">First</a>
+                            <a class="page-link" href="{{ $results->url(1)}}"> << </a>
                         </li>
                         <li class="page-item {{ ($results->currentPage() == 1) ? ' disabled' : '' }}">
-                            <a class="page-link" href="{{ $results->url($results->currentPage()-1)}}">Previous</a>
+                            <a class="page-link" href="{{ $results->url($results->currentPage()-1)}}"> < </a>
                         </li>
                     @endif
                     @for ($i = 1; $i <= $results->currentPage()-1; $i++)
@@ -69,10 +68,10 @@
                     @endfor
                     @if($results->lastPage() != $results->currentPage())
                         <li class="page-item {{ ($results->currentPage() == $results->lastPage()) ? ' disabled' : '' }}">
-                            <a class="page-link" href="{{ $results->url($results->currentPage()+1) }}" >Next</a>
+                            <a class="page-link" href="{{ $results->url($results->currentPage()+1) }}"> > </a>
                         </li>
                         <li class="page-item {{ ($results->currentPage() == 1)}}">
-                            <a class="page-link" href="{{ $results->url($results->lastPage())}}">Last</a>
+                            <a class="page-link" href="{{ $results->url($results->lastPage())}}"> >> </a>
                         </li>
                     @endif
                 </ul>
@@ -90,7 +89,7 @@
                 alphabet = ['А','Б','В','Г','Д','Е','Ж','З','И','Й','К','Л','М','Н','О','П','Р','С','Т','У','Ф','Х','Ц','Ч','Ш','Щ','Э','Ю','Я'];
             }
             else if (lang === 3) {
-                alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+                alphabet = ['А','Б','В','Г','Д','Е','Ж','З','И','Й','К','Л','М','Н','О','П','Р','С','Т','У','Ф','Х','Ц','Ч','Ш','Щ','Э','Ю','Я'];
             }
             var arr = @json($two_letters);
             var letter = "{{$letter}}";

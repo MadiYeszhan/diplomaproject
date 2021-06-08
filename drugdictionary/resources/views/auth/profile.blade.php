@@ -3,13 +3,13 @@
     <link href="{{ asset('css/profile.css') }}" rel="stylesheet" type="text/css">
 
     <div class="container mt-5">
-        <h3>Ваш аккаунт</h3>
+        <h3>Your account</h3>
         <div class="container">
             <div class="row g-0 border rounded  mb-4 position-relative p-3">
                 <div>
-                    <h4 class="">Имя пользователя: {{Auth::user()->name}}</h4>
+                    <h4 class="">User name: {{Auth::user()->name}}</h4>
                     <h4 class="">E-mail: {{Auth::user()->email}}</h4>
-                    <h4 class="">Дата создания аккаунта: {{Auth::user()->created_at}}</h4>
+                    <h4 class="">Account creation date: {{Auth::user()->created_at}}</h4>
                     @if(Auth::user()->roles->contains(2))
                         <h4 class="">Ваши роли: @foreach(Auth::user()->roles as $role) {{$role->title}}@if($loop->iteration != $loop->count), @else @endif @endforeach</h4>
                     @endif
@@ -23,8 +23,8 @@
                 <a class="profile-link" href="{{route('profile.settings')}}">
                 <div class="card h-100">
                     <div class="card-body">
-                        <h5 class="card-title">Настройки</h5>
-                        <p class="card-text card-profile">Изменение пароля, почтового адресса, имени пользователя.</p>
+                        <h5 class="card-title">Settings</h5>
+                        <p class="card-text card-profile">Change password, user name.</p>
                     </div>
                 </div>
                 </a>
@@ -33,8 +33,8 @@
                 <a class="profile-link" href="{{route('profile.disease_list')}}">
                 <div class="card h-100">
                     <div class="card-body">
-                        <h5 class="card-title">Противопоказания</h5>
-                        <p class="card-text card-profile">Выбор противопоказаний для выделения в составах.</p>
+                        <h5 class="card-title">Contradictions</h5>
+                        <p class="card-text card-profile">The choice of contraindications for selection in the formulations.</p>
                     </div>
                 </div>
                 </a>
@@ -44,8 +44,8 @@
                 <a class="profile-link" href="{{route('profile.comments')}}">
                 <div class="card h-100">
                     <div class="card-body">
-                        <h5 class="card-title">Ваши рецензий</h5>
-                        <p class="card-text card-profile">Список рецензий оставленных вами под различными лекарствами.</p>
+                        <h5 class="card-title">Your reviews</h5>
+                        <p class="card-text card-profile">List of reviews left by you on various drugs.</p>
                     </div>
                 </div>
                 </a>

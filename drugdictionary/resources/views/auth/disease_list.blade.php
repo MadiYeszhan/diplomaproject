@@ -8,13 +8,13 @@
 
     <div class="content">
         <div class="container mt-5">
-            <h3>Ваш аккаунт</h3>
+            <h3>Your account</h3>
             <div class="container">
                 <div class="row g-0 border rounded  mb-4 position-relative p-3">
                     <div>
-                        <h4 class="">Имя пользователя: {{Auth::user()->name}}</h4>
+                        <h4 class="">User name: {{Auth::user()->name}}</h4>
                         <h4 class="">E-mail: {{Auth::user()->email}}</h4>
-                        <h4 class="">Дата создания аккаунта: {{Auth::user()->created_at}}</h4>
+                        <h4 class="">Account creation date: {{Auth::user()->created_at}}</h4>
                         @if(Auth::user()->roles->contains(2))
                             <h4 class="">Ваши роли: @foreach(Auth::user()->roles as $role) {{$role->title}}@if($loop->iteration != $loop->count), @else @endif @endforeach</h4>
                         @endif
@@ -30,7 +30,7 @@
                     </button>
                 </div>
             @endif
-            <h3>Список противопоказаний</h3>
+            <h3>List of contradictions</h3>
             <div class="row g-0 border rounded  mb-4 shadow-sm h-md-250 position-relative">
                 <div class="container p-3">
                     @if(Auth::user()->diseases->first())
@@ -71,7 +71,7 @@
                         <h2>You have no any disease</h2>
                     @endif
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal">Add</button>
-                    <a href="{{route('profile')}}" class="btn btn-outline-secondary">Назад</a>
+                    <a href="{{route('profile')}}" class="btn btn-outline-secondary">Back</a>
             </div>
             </div>
         </div>

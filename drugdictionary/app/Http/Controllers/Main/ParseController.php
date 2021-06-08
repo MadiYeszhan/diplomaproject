@@ -43,16 +43,16 @@ class ParseController extends Controller
                     if ($isAvailable != "") {
                         $isAvailable = preg_replace('/\s+/', ' ', $isAvailable);
                         if ($isAvailable == "В наличии: Более 10 шт"){
-                            return ['pharmacy' => 'Аптека Плюс','available' => 'In stock','count' => 'More 10','price' => $price,'color' => 'green'];
+                            return ['pharmacy' => 'Аптека Плюс','available' => 'В наличии','count' => 'Больше 10','price' => $price,'color' => 'green'];
                         }
                         elseif ($isAvailable == "Осталось всего: Менее 10 шт"){
-                            return ['pharmacy' => 'Аптека Плюс','available' => 'In stock','count' => 'Less 10','price' => $price,'color' => 'orange'];
+                            return ['pharmacy' => 'Аптека Плюс','available' => 'В наличии','count' => 'Меньше 10','price' => $price,'color' => 'orange'];
                         }
                     }
                     //if product is not available
                     elseif ($isNotAvailable == "Нет в наличии") {
                         //return that product is not available
-                        return ['pharmacy' => 'Аптека Плюс','available' => "Out of stock",'count' => 0,'price' => $price,'color' => "red"];
+                        return ['pharmacy' => 'Аптека Плюс','available' => "Нет в наличии",'count' => 0,'price' => $price,'color' => "red"];
                     }
                 }
             }
@@ -87,12 +87,12 @@ class ParseController extends Controller
                 if ($isAvailable != null and ($price != null and is_numeric($price))) {
                     //if product is available
                     if ($isAvailable == "Есть в наличии"){
-                        return ['pharmacy' => 'Биосфера','available' => 'In stock','count' => 'Unknown','price' => $price,'color' => 'green'];
+                        return ['pharmacy' => 'Биосфера','available' => 'В наличии','count' => 'Не известно','price' => $price,'color' => 'green'];
                     }
                     //if product is not available
                     elseif ($isAvailable == "Нет в наличии в интернет-аптеке") {
                         //return that product is not available
-                        return ['pharmacy' => 'Биосфера','available' => 'Out of stock','count' => 0,'price' => $price,'color' => 'red'];
+                        return ['pharmacy' => 'Биосфера','available' => 'Нет в наличии','count' => 0,'price' => $price,'color' => 'red'];
                     }
                 }
             }
@@ -133,12 +133,12 @@ class ParseController extends Controller
                 if (($isAvailable != null or $isNotAvailable != null) and ($price != null and is_numeric($price))) {
                     //if product is available
                     if ($isAvailable == "Есть в наличии") {
-                        return ['pharmacy' => 'europharma','available' => 'In stock','count' => 'Unknown','price' => $price,'color' => 'green'];
+                        return ['pharmacy' => 'europharma','available' => 'В наличии','count' => 'Не известно','price' => $price,'color' => 'green'];
                     }
                     //if product is not available
                     elseif ($isNotAvailable == "Нет в наличии") {
                         //return that product is not available
-                        return ['pharmacy' => 'europharma','available' => 'Out of stock','count' => 0,'price' => $price,'color' => 'red'];
+                        return ['pharmacy' => 'europharma','available' => 'Нет в наличии','count' => 0,'price' => $price,'color' => 'red'];
                     }
                 }
             }
@@ -176,11 +176,11 @@ class ParseController extends Controller
                 if ($isAvailable != null and ($price != null and is_numeric($price))) {
                     //if product is not available
                     if ($isAvailable == 'Нет в наличии'){
-                        return ['pharmacy' => 'Талап','available' => 'Out of stock','count' => 0,'price' => $price,'color' => 'red'];
+                        return ['pharmacy' => 'Талап','available' => 'Нет в наличии','count' => 0,'price' => $price,'color' => 'red'];
                     }
                     elseif ($isAvailable > 0) {
                         //return that product is available
-                        return ['pharmacy' => 'Талап','available' => 'In stock','count' => $isAvailable,'price' => $price,'color' => 'green'];
+                        return ['pharmacy' => 'Талап','available' => 'В наличии','count' => $isAvailable,'price' => $price,'color' => 'green'];
                     }
                 }
             }
@@ -218,15 +218,15 @@ class ParseController extends Controller
                 if ($isAvailable != null and ($price != null and is_numeric($price))) {
                     //if product is available
                     if ($isAvailable == 'В наличии'){
-                        return ['pharmacy' => 'Evcalyptus','available' => 'In stock','count' => 'Unknown','price' => $price,'color' => 'green'];
+                        return ['pharmacy' => 'Evcalyptus','available' => 'В наличии','count' => 'Не известно','price' => $price,'color' => 'green'];
                     }
                     elseif ($isAvailable == "Заканчивается (перед оплатой, необходимо уточнить в аптеки наличие товара)") {
                         //return that product is not available
-                        return ['pharmacy' => 'Evcalyptus','available' => 'In stock','count' => 'Limited','price' => $price,'color' => 'orange'];
+                        return ['pharmacy' => 'Evcalyptus','available' => 'В наличии','count' => 'Ограничено','price' => $price,'color' => 'orange'];
                     }
                     elseif ($isAvailable == "Нет в наличии") {
                         //return that product is not available
-                        return ['pharmacy' => 'Evcalyptus','available' => 'Out of stock','count' => 0,'price' => $price,'color' => 'red'];
+                        return ['pharmacy' => 'Evcalyptus','available' => 'Нет в наличии','count' => 0,'price' => $price,'color' => 'red'];
                     }
                 }
             }

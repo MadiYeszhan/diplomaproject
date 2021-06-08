@@ -20,7 +20,7 @@ class SearchController extends Controller
 {
     const alphabetArrEng = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
     const alphabetArrRus = ['А','Б','В','Г','Д','Е','Ж','З','И','Й','К','Л','М','Н','О','П','Р','С','Т','У','Ф','Х','Ц','Ч','Ш','Щ','Э','Ю','Я'];
-    const alphabetArrKaz = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
+    const alphabetArrKaz = ['А','Б','В','Г','Д','Е','Ж','З','И','Й','К','Л','М','Н','О','П','Р','С','Т','У','Ф','Х','Ц','Ч','Ш','Щ','Э','Ю','Я'];
 
     public function searchText(Request $request)
     {
@@ -64,10 +64,6 @@ class SearchController extends Controller
                     $user_disease = Auth::user()->diseases;
                 }
             }
-
-
-
-
 
 
             return view('main.search.drug_search_text', compact(['results','search','user_disease']));

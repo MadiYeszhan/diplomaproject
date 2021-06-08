@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Main;
 
 use App\Http\Controllers\Controller;
 use App\Models\Disease;
+use App\Models\DiseaseCategory;
 use App\Models\DiseaseLanguage;
 use App\Models\Drug;
 use App\Models\DrugCategory;
@@ -27,7 +28,7 @@ class MainController extends Controller
 
     const alphabetArrEng = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
     const alphabetArrRus = ['А','Б','В','Г','Д','Е','Ж','З','И','Й','К','Л','М','Н','О','П','Р','С','Т','У','Ф','Х','Ц','Ч','Ш','Щ','Э','Ю','Я'];
-    const alphabetArrKaz = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
+    const alphabetArrKaz = ['А','Б','В','Г','Д','Е','Ж','З','И','Й','К','Л','М','Н','О','П','Р','С','Т','У','Ф','Х','Ц','Ч','Ш','Щ','Э','Ю','Я'];
 
 
     //Index and Sections pages
@@ -221,8 +222,10 @@ class MainController extends Controller
 
         $disease = Disease::find($id);
         if ($disease != null) {
+            $diseaseCat = $disease->disease_category->disease_category_languages->where('language','=',$lang)->first();
             $disease =  $disease->disease_languages->where('language','=',$lang)->first();
-            return view('main.details.disease', compact(['disease']));
+
+            return view('main.details.disease', compact(['disease','diseaseCat']));
         }
         else {
             return redirect()->back();

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Middleware\ModeratorCheck;
 use App\Models\Drug;
 use App\Models\PharmacyLink;
 use Illuminate\Http\Request;
@@ -10,6 +11,10 @@ use Illuminate\Support\Facades\Validator;
 
 class PharmacyLinkController extends Controller
 {
+    public function __construct(){
+        $this->middleware([ModeratorCheck::class]);
+    }
+
     /**
      * Display a listing of the resource.
      *
