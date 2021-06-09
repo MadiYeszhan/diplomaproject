@@ -89,7 +89,7 @@
                     <h3>{{__('section.drug_search_category')}}</h3>
                     <ul class="list-unstyled">
                         @foreach($drugCats as $cat)
-                        <li><a class="text-secondary links" href="{{route('searchDrugCategory',$cat->id)}}">{{$cat->title}}</a></li>
+                        <li><a class="text-secondary links" href="{{route('searchDrugCategory',$cat->drug_category_id)}}">{{$cat->title}}</a></li>
                         @endforeach
                     </ul>
                 </div>

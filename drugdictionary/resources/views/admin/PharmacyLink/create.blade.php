@@ -12,7 +12,7 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="d-flex align-items-center">
-                            <h2>Add new Manufacturer</h2>
+                            <h2>Add new Link</h2>
                         </div>
                     </div>
                     <div class="card-body">

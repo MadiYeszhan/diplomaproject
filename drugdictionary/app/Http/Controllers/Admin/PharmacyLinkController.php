@@ -22,7 +22,7 @@ class PharmacyLinkController extends Controller
      */
     public function index()
     {
-        $pharmacy_links = PharmacyLink::all();
+        $pharmacy_links = PharmacyLink::all()->sortByDesc('created_at');
         return view('admin.PharmacyLink.index', compact(['pharmacy_links']));
     }
 

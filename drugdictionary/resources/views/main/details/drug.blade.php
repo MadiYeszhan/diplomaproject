@@ -81,9 +81,14 @@
                         <p class="lead font-weight-bold">{{__('details.special')}}</p>
                         <p class="lead fw-normal">{{$drugLanguage->special_instructions}}</p>
 
-                        @if($related_drug != null)
+                        @if($related_drug != null or $drug->drug_id != null)
+
+
                             @if($related_drug->first() != null)
                             <p class="lead font-weight-bold">{{__('details.drug_group')}}</p>
+
+
+
                             @foreach($related_drug as $d)
                                 <a href="{{route('main.drugs.details',$d->drug_id)}}">{{$d->title}}</a>
                             @endforeach

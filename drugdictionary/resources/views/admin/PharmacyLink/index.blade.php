@@ -37,8 +37,10 @@
                                 <tbody>
                                 @foreach($pharmacy_links as $pharmacy)
                                     <tr class="dd">
-                                            <td>{{$pharmacy->drug_id}}</td>
-                                            <td>{{$pharmacy->pharmacy_number}}</td>
+                                            <td>{{$pharmacy->drug->drug_titles->sortBy('weight')->sortBy('language')->first()->title}}</td>
+                                            <td>
+                                                {{$pharmacy->pharmacy_number}}
+                                            </td>
                                             <td>{{$pharmacy->link}}</td>
                                             <td>
                                                 <form  class="d-inline" action="{{route('pharmacy_links.destroy',$pharmacy->id)}}"  method="post">

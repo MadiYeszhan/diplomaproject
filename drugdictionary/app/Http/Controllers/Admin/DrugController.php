@@ -202,7 +202,7 @@ class DrugController extends Controller
 
         $manufacturerArr = array();
         foreach (Manufacturer::all() as $man){
-                array_push($manufacturerArr, ['tag' => $man->first()->title,'value' => $man->id]);
+                array_push($manufacturerArr, ['tag' => $man->title,'value' => $man->id]);
         }
 
         $diseaseContradiction = "";
@@ -285,7 +285,8 @@ class DrugController extends Controller
             }
 
             if ($request->input('manufacturer_id') != -1) {
-                $drug->manufacturers()->attach($disease);
+                $drug->manufacturers()->detach();
+                $drug->manufacturers()->attach($request->input('manufacturer_id'));
             }
             else{
                 $drug->manufacturers()->detach();

@@ -168,7 +168,8 @@ class MainController extends Controller
             $contradiction = $drug->contradiction->contradiction_languages->where('language','=',$lang);
             $contradiction_diseases = $drug->contradiction->diseases;
             $images = $drug->drug_images;
-            $rating = DB::table('drug_reviews')->where('drug_id','=',$drug->id)->selectRaw('sum(rating) / count(rating) as rating');
+            $rating = DB::table('drug_reviews')->where('drug_id','=',$drug->id)
+                ->selectRaw('sum(rating) / count(rating) as rating');
             $rating = $rating->get()->first()->rating;
             $comments = $drug->drug_reviews;
             $disease = $drug->disease->disease_languages->where('language','=',$lang);
@@ -183,8 +184,10 @@ class MainController extends Controller
                     ->forPage(1,10);
             }
 
-
-            return view('main.details.drug', compact(['drug', 'lang', 'drugLanguage','disease','pharmacies','side_effect','contradiction','contradiction_diseases','rating','images','comments','related_drug']));
+            $manufacturer = $drug->manufacturers->first();
+            return view('main.details.drug', compact(['drug', 'lang', 'drugLanguage','disease','pharmacies',
+                'side_effect','contradiction','contradiction_diseases','rating','images','comments','related_drug',
+                'manufacturer']));
         }
         else {
             return redirect()->back();

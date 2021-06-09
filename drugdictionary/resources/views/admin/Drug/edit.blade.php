@@ -139,13 +139,13 @@
                             <div class="form-group">
                                 <label>Manufacturer</label>
 
-                                <select class="form-control"  name="manufacturer_id" id="manufacturer_id"  data-live-search="true">
-                                    <option value="-1" selected="selected">
+                                <select class="form-control"  name="manufacturer_id" id="manufacturer_id" data-live-search="true">
+                                    <option value="-1">
                                         No manufacturer
                                     </option>
 
                                     @foreach($manufacturerArr as $man)
-                                        <option value="{{$man['value']}}">
+                                        <option value="{{$man['value']}}"  @if($drug->manufacturers->contains($man['value']))  selected="selected"  @endif>
                                             {{$man['tag']}}
                                         </option>
                                     @endforeach

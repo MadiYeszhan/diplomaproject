@@ -34,7 +34,7 @@
                                     @endif
                                 @endif
                             </h4>
-                            <p>@if($result->description != null){{$result->description}}) @else  {{__('search.drug_no_lang')}} @endif</p>
+                            <p  class="search_text">@if($result->description != null){{$result->description}}) @else  {{__('search.drug_no_lang')}} @endif</p>
                         </div>
                         <br>
                     @endforeach
