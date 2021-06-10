@@ -1,0 +1,27 @@
+.button{
+    width: 150px;
+    height: 57px;
+    border-radius: 10px;
+}
+
+.card{
+    border-radius: 10px;
+}
+
+.card1{
+    width: 500px;
+    height: 250px;
+}
+
+.alphabet-button{
+    margin-bottom: 10px;
+}
+
+.main-search{
+    padding-top: 4vw;
+    width: 58% !important;
+}
+
+.main-dropdown{
+    font-size: 18px;
+}
